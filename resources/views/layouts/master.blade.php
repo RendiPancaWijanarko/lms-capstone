@@ -186,7 +186,7 @@
             {{  Config::get('settings.name') }}
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; {{ \Carbon\Carbon::now()->year }} <a href="http://angelkurten.com">Angel Kürten</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; {{ \Carbon\Carbon::now()->year }} <a href="https://rendipancawijanarko.github.io/FlyHigh/FlyHigh.html" target="blank">FlyHigh Corp</a>.</strong> All rights reserved.
     </footer>
 </div>
 <!-- ./wrapper -->
