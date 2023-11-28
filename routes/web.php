@@ -34,7 +34,7 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 // ROUTE DASHBOARD ADMIN
 Route::get('admin/dashboard', 'AdminController@index')->name('admin.dashboard');
         // 1. Route Lihat Rincian Total Teachers
-        Route::get('admin/teachers', 'TeacherController@index')->name('dataTeacher');
+        Route::get('admin/teachers', 'TeacherController@index')->name('teachers.index');
         // 2. Route Lihat Rincian Total Students
         Route::get('admin/students', 'StudentController@index')->name('dataStudent');
         // 3. Route Lihat Rincian Total Courses
