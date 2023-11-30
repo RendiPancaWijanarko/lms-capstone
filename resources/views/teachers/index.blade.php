@@ -15,10 +15,6 @@
     <div class="container">
         {{ Breadcrumbs::render('teachers.index') }}
         <div class="card">
-            <div class="card-header text-right">
-                <a href="{{ route('createTeacher') }}" class="btn btn-primary" role="button">Add New Teacher</a>
-            </div>
-
             <div class="card-body">
                 <table class="table table-hover table-bordered" id="data-table">
                     <thead>
@@ -36,10 +32,10 @@
                                 <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ $teacher->name }}</td>
                                 <td>{{ $teacher->phone }}</td>
-                                <td>{{ $teacher->category_id }}</td>
+                                <td>{{ $teacher->category->course_name }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-warning btn-sm" role="button">Edit</a>
-                                    <a href="#" class="btn btn-danger btn-sm" role="button" onclick="deleteTeacher('{{ $teacher->id }}')">Delete</a>
+                                    <a href="{{ route('editTeacher', ['teacher' => $teacher->id]) }}" class="btn btn-warning btn-sm" role="button">Edit</a>
+                                    {{-- <a onclick="confirmDelete(this)" data-url="{{ route('deleteMapel', ['mapel' => $mataPelajaran->id]) }}" class="btn btn-danger btn-sm" role="button">Hapus</a> --}}
                                 </td>
                             </tr>
                         @endforeach

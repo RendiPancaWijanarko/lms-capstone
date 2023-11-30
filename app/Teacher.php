@@ -16,4 +16,12 @@ class Teacher extends Model
         'phone',
         'category_id'
     ];
+
+    /**
+     * Get the category associated with the teacher.
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }

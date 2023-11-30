@@ -31,8 +31,9 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-// ROUTE DASHBOARD ADMIN
-Route::get('admin/dashboard', 'AdminController@index')->name('admin.dashboard');
+Route::middleware(['auth'])->group(function () {
+    // ROUTE DASHBOARD ADMIN
+    Route::get('admin/dashboard', 'AdminController@index')->name('admin.dashboard');
         // 1. Route Lihat Rincian Total Teachers
         Route::get('admin/teachers', 'TeacherController@index')->name('teacher.index');
         // 2. Route Lihat Rincian Total Students
@@ -41,6 +42,11 @@ Route::get('admin/dashboard', 'AdminController@index')->name('admin.dashboard');
         Route::get('admin/courses', 'CourseController@index')->name('dataCourse');
 
         // CRUD TEACHER //
-        // 1. Create dan Simpan
-        Route::get('admin/teachers/create', 'TeacherController@create')->name('createTeacher');
-        Route::post('admin/teachers/store', 'TeacherController@store')->name('storeTeacher');
+        // 1. Create dan Simpan [BELUM TERPAKAI]
+        // Route::get('admin/teachers/create', 'TeacherController@create')->name('createTeacher');
+        // Route::post('admin/teachers/store', 'TeacherController@store')->name('storeTeacher');
+        // 2. Update (dan simpan)
+        // web.php
+        Route::get('teachers/{teacher}/edit', 'TeacherController@edit')->name('editTeacher');
+        Route::post('teachers/{teacher}/update', 'TeacherController@update')->name('updateTeacher');
+});

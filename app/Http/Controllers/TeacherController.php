@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Teacher;
+use App\Category;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -18,7 +19,6 @@ class TeacherController extends Controller
         return view('teachers.index', [
             'teachers' => $teachers
         ]);
-        return view('teachers.index');
     }
 
     /**
@@ -59,9 +59,16 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Teacher $teacher)
     {
-        //
+        // return view('teachers.edit', [
+        //     'teacher' => $teacher
+        // ]);
+        $categories = \App\Category::all();
+        return view('teachers.edit', [
+            'teacher' => $teacher,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -71,10 +78,26 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+    public function update(Request $request, Teacher $teacher)
     {
-        //
+        // Validasi data formulir jika diperlukan
+        $validatedData = validator($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|numeric',
+            'category' => 'required|exists:categories.id',
+        ])->validate();
+
+        $teacher->name = $validatedData['name'];
+        $teacher->email = $validatedData['email'];
+        $teacher->phone = $validatedData['phone'];
+        $teacher->category = $validatedData['category'];
+        $teacher->save();
+        return redirect(route('teachers.index'))
+            ->with('success', 'Teacher updated successfully!');
     }
+
 
     /**
      * Remove the specified resource from storage.
