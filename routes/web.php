@@ -44,3 +44,11 @@ Route::get('admin/dashboard', 'AdminController@index')->name('admin.dashboard');
         // 1. Create dan Simpan
         Route::get('admin/teachers/create', 'TeacherController@create')->name('createTeacher');
         Route::post('admin/teachers/store', 'TeacherController@store')->name('storeTeacher');
+
+
+        //STUDENTS DASHBOARD//
+        
+        Route::get('admin/students/create', 'StudentController@create')->name('createStudent');
+    
+        Route::post('admin/students/store', 'StudentController@store')->name('storeStudent');
+        
