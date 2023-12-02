@@ -94,6 +94,7 @@ class TeacherController extends Controller
         $teacher->phone = $validatedData['phone'];
         $teacher->category = $validatedData['category'];
         $teacher->save();
+
         return redirect(route('teachers.index'))
             ->with('success', 'Teacher updated successfully!');
     }
@@ -105,8 +106,10 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Teacher $teacher)
     {
-        //
+        $teacher->delete();
+        return redirect(route('teachers.index'))
+            ->with('success', 'Teacher deleted successfully!');
     }
 }

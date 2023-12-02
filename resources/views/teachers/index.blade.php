@@ -35,7 +35,7 @@
                                 <td>{{ $teacher->category->course_name }}</td>
                                 <td>
                                     <a href="{{ route('editTeacher', ['teacher' => $teacher->id]) }}" class="btn btn-warning btn-sm" role="button">Edit</a>
-                                    {{-- <a onclick="confirmDelete(this)" data-url="{{ route('deleteMapel', ['mapel' => $mataPelajaran->id]) }}" class="btn btn-danger btn-sm" role="button">Hapus</a> --}}
+                                    <a onclick="confirmDelete(this)" data-url="{{ route('deleteTeacher', ['teacher' => $teacher->id]) }}" class="btn btn-danger btn-sm" role="button">Remove</a>
                                 </td>
                             </tr>
                         @endforeach

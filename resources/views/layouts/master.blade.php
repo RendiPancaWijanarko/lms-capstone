@@ -121,7 +121,7 @@
         <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
         <!-- SweetAlert -->
-        <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
+        <script src="{{asset('js/sweetalert.min.js')}}"></script>
         <!-- Your custom scripts -->
         @yield('addJavascript')
 
@@ -130,8 +130,9 @@
                 confirmDelete = function(button){
                     var url = $(button).data('url');
                     swal({
-                        'title' : 'Konfirmasi Hapus',
-                        'text'  : 'Kamu yakin ingin menghapus data ini?',
+                        'title' : 'Confirmation of Change',
+                        'text'  : 'Do you really want to delete this data?',
+                        'icon'  : 'warning',
                         'dangermode'    : true,
                         'buttons'       : true
                     }).then(function(value){
@@ -145,20 +146,21 @@
                 function confirmUpdate() {
                     event.preventDefault();
                     swal({
-                        title   : 'Konfirmasi Ubah',
-                        text    : 'Kamu yakin ingin mengubah data ini?',
+                        title   : 'Confirmation of Change',
+                        text    : 'Do you really want to update this data?',
                         icon    : 'warning',
                         buttons : true,
                         dangerMode : true,
                     }).then((willUpdate) => {
                         if (willUpdate) {
-                            // Jika user menekan "Ok", submit form
+                            // If user click on "OK", the form will be submitted.
                             $('form').submit();
                         }
                     });
                 }
             </script>
-            <script>
+
+            {{-- <script>
                 function confirmCreate() {
                     event.preventDefault();
                     swal({
@@ -174,7 +176,7 @@
                         }
                     });
                 }
-            </script>
+            </script> --}}
         {{-- END | ALERT TAMBAH, EDIT, HAPUS DATA --}}
     </body>
 </html>

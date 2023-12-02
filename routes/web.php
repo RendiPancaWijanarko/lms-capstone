@@ -42,19 +42,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('admin/courses', 'CourseController@index')->name('dataCourse');
 
         // CRUD TEACHER //
-<<<<<<< HEAD
-        // 1. Create dan Simpan
-        Route::get('admin/teachers/create', 'TeacherController@create')->name('createTeacher');
-        Route::post('admin/teachers/store', 'TeacherController@store')->name('storeTeacher');
-
-
-        //STUDENTS DASHBOARD//
-        
-        Route::get('admin/students/create', 'StudentController@create')->name('createStudent');
-    
-        Route::post('admin/students/store', 'StudentController@store')->name('storeStudent');
-        
-=======
         // 1. Create dan Simpan [BELUM TERPAKAI]
         // Route::get('admin/teachers/create', 'TeacherController@create')->name('createTeacher');
         // Route::post('admin/teachers/store', 'TeacherController@store')->name('storeTeacher');
@@ -62,5 +49,17 @@ Route::middleware(['auth'])->group(function () {
         // web.php
         Route::get('teachers/{teacher}/edit', 'TeacherController@edit')->name('editTeacher');
         Route::post('teachers/{teacher}/update', 'TeacherController@update')->name('updateTeacher');
+        // 3. Delete (dan alert)
+        Route::get('teacher/{teacher}/delete', 'TeacherController@destroy')->name('deleteTeacher');
+
+        //STUDENTS DASHBOARD//
+
+        Route::get('admin/students/create', 'StudentController@create')->name('createStudent');
+
+        Route::post('admin/students/store', 'StudentController@store')->name('storeStudent');
 });
->>>>>>> ea6856d383e8df4c7ef2cb7392dc9ba8e0233bda
+
+
+
+
+

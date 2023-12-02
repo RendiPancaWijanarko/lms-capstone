@@ -14,7 +14,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="phone">Email</label>
+                        <label for="email">Email</label>
                         <input type="text" name="email" id="email" class="form-control" value="{{ $teacher->email }}" placeholder="Masukkan email guru" required>
                     </div>
 
@@ -36,8 +36,8 @@
 
                     {{-- Tombol untuk menyimpan perubahan --}}
                     <div class="text-right">
-                        <a href="{{ route('teachers.index') }}" class="btn btn-outline-danger mr-2" role="button">Batal</a>
-                        <button type="submit" class="btn btn-primary" onclick="confirmUpdate()">Simpan</button>
+                        <a href="{{ route('teachers.index') }}" class="btn btn-outline-danger mr-2" role="button">Cancel</a>
+                        <button type="submit" class="btn btn-primary" onclick="confirmUpdate()">Save</button>
                     </div>
                 </form>
             </div>
