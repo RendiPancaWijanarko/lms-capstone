@@ -55,7 +55,6 @@ Route::middleware(['auth'])->group(function () {
         //STUDENTS DASHBOARD//
 
         Route::get('admin/students/create', 'StudentController@create')->name('createStudent');
-
         Route::post('admin/students/store', 'StudentController@store')->name('storeStudent');
 });
 

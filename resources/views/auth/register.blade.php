@@ -6,6 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
+                @csrf
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" id="form-auth">
@@ -26,13 +27,16 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                                <select id="role" class="form-control @error('role') is-invalid @enderror" name="role" required>
+                                    <option value="student" {{ old('role') == 'student' ? 'selected' : '' }}>Student</option>
+                                    <option value="teacher" {{ old('role') == 'teacher' ? 'selected' : '' }}>Teacher</option>
+                                </select>
 
-                                @error('username')
-                                <span class="invalid-feedback" role="alert">
+                                @error('role')
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
