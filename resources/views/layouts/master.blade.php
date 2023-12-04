@@ -130,7 +130,7 @@
                 confirmDelete = function(button){
                     var url = $(button).data('url');
                     swal({
-                        'title' : 'Confirmation of Change',
+                        'title' : 'Confirmation of Removal',
                         'text'  : 'Do you really want to delete this data?',
                         'icon'  : 'warning',
                         'dangermode'    : true,
