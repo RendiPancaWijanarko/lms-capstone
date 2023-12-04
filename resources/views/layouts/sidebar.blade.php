@@ -41,6 +41,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.dashboard') }}" class="nav-link {{ is_active('admin.dashboard') }}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                {{ __('Dashboard') }}
+                            </p>
+                        </a>
+                    </li>
                     @can('view_admin')
                     <li class="nav-header">@lang('menus.administration')</li>
                     <li class="nav-item">

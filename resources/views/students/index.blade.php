@@ -27,7 +27,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($teachers as $teacher)
+                        {{-- @foreach ($teachers as $teacher)
                             <tr>
                                 <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ $teacher->name }}</td>
@@ -38,7 +38,7 @@
                                     <a onclick="confirmDelete(this)" data-url="{{ route('deleteTeacher', ['teacher' => $teacher->id]) }}" class="btn btn-danger btn-sm" role="button">Remove</a> --}}
                                 </td>
                             </tr>
-                        @endforeach
+                        {{-- @endforeach --}}
                     </tbody>
                 </table>
             </div>
