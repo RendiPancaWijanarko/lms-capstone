@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="col-12">
+    {{ Breadcrumbs::render('courses.index') }}
     <div class="card">
         <div class="card-header">
             <div class="d-flex align-items-center">

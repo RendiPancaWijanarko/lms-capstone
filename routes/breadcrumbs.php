@@ -24,5 +24,5 @@ Breadcrumbs::for('students.index', function ($trail) {
 // BC ADMIN/COURSE
 Breadcrumbs::for('courses.index', function ($trail) {
     $trail->parent('admin.dashboard');
-    $trail->push('Courses', route('courses.index'));
+    $trail->push('courses', route('courses.index'));
 });

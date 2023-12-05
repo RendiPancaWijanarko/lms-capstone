@@ -20,9 +20,14 @@ class AdminController extends Controller
     {
         $totalTeachers = Teacher::count();
         $totalStudents = Student::count();
+
+        // Mengambil 3 data courses teratas berdasarkan jumlah enrollments
+        $topCourses = Course::orderBy('enrollments', 'desc')->take(3)->get();
+
+        // Mengambil total jumlah courses
         $totalCourses = Course::count();
 
-        return view('admin.dashboard', compact('totalTeachers', 'totalStudents', 'totalCourses'));
+        return view('admin.dashboard', compact('totalTeachers', 'totalStudents', 'totalCourses', 'topCourses'));
     }
 
     /**

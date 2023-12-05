@@ -48,12 +48,16 @@
         <div class="col-md-8">
             <h3>Popular courses</h3>
             <ul class="list-group">
-                {{-- @foreach ($popularCourses as $course) --}}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{-- {{ $course->name }} --}}
-                    {{-- <span class="badge bg-gradient-blue badge-pill">{{ $course->enrollments }}</span> --}}
-                </li>
-                {{-- @endforeach --}}
+                @if($topCourses->isNotEmpty())
+                    @foreach ($topCourses as $course)
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ $course->name }}
+                            <span class="badge bg-gradient-blue badge-pill">{{ $course->enrollments }}</span>
+                        </li>
+                    @endforeach
+                @else
+                    <li class="list-group-item">No courses available.</li>
+                @endif
             </ul>
         </div>
 
