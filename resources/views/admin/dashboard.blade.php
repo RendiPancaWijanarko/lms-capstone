@@ -43,5 +43,26 @@
             </div>
         </div>
     </div>
+
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <h3>Popular courses</h3>
+            <ul class="list-group">
+                {{-- @foreach ($popularCourses as $course) --}}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{-- {{ $course->name }} --}}
+                    {{-- <span class="badge bg-gradient-blue badge-pill">{{ $course->enrollments }}</span> --}}
+                </li>
+                {{-- @endforeach --}}
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <h3>Reports</h3>
+            <div class="chart-container">
+                <canvas id="reportsChart"></canvas>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
