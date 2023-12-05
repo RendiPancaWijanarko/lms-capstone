@@ -21,6 +21,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Name</th>
+                            <th>Email</th>
                             <th>Phone</th>
                             <th>Category</th>
                             <th>Action</th>
@@ -31,6 +32,7 @@
                             <tr>
                                 <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ $teacher->name }}</td>
+                                <td>{{ $teacher->email }}</td>
                                 <td>{{ $teacher->phone }}</td>
                                 <td>{{ $teacher->category->course_name }}</td>
                                 <td>

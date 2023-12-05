@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
         // 1. Route Lihat Rincian Total Teachers
         Route::get('admin/teachers', 'TeacherController@index')->name('teacher.index');
         // 2. Route Lihat Rincian Total Students
-        Route::get('admin/students', 'StudentController@index')->name('dataStudent');
+        Route::get('admin/students', 'StudentController@index')->name('students.index');
         // 3. Route Lihat Rincian Total Courses
         Route::get('admin/courses', 'CourseController@index')->name('dataCourse');
 
@@ -54,8 +54,11 @@ Route::middleware(['auth'])->group(function () {
 
         //STUDENTS DASHBOARD//
 
-        Route::get('admin/students/create', 'StudentController@create')->name('createStudent');
-        Route::post('admin/students/store', 'StudentController@store')->name('storeStudent');
+        // 2. Update (dan simpan)
+        Route::get('students/{student}/edit', 'StudentController@edit')->name('editStudent');
+        Route::post('students/{student}/update', 'StudentController@update')->name('updateStudent');
+        // 3. Delete (dan alert)
+        Route::get('student/{student}/delete', 'StudentController@destroy')->name('deleteStudent');
 });
 
 

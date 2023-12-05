@@ -34,10 +34,9 @@
                                 <td>{{ $student->username }}</td>
                                 <td>{{ $student->email }}</td>
                                 <td>
-                                    {{-- Actions, seperti tombol Edit atau Remove --}}
-                                    {{-- <a href="{{ route('editStudent', ['student' => $student->id]) }}" class="btn btn-warning btn-sm" role="button">Edit</a>
-                                    <a onclick="confirmDelete(this)" data-url="{{ route('deleteStudent', ['student' => $student->id]) }}" class="btn btn-danger btn-sm" role="button">Remove</a> --}}
-                                </td>
+                                    <a href="{{ route('editStudent', ['student' => $student->id]) }}" class="btn btn-warning btn-sm" role="button">Edit</a>
+                                    <a onclick="confirmDelete(this)" data-url="{{ route('deleteStudent', ['student' => $student->id]) }}" class="btn btn-danger btn-sm" role="button">Remove</a>
+                               </td>
                             </tr>
                         @endforeach
                     </tbody>

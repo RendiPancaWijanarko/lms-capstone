@@ -58,7 +58,6 @@
                     </div>
                 </form>
 
-
             </nav>
             <!-- /.navbar -->
 
@@ -146,14 +145,14 @@
                 function confirmUpdate() {
                     event.preventDefault();
                     swal({
-                        title   : 'Confirmation of Change',
-                        text    : 'Do you really want to update this data?',
-                        icon    : 'warning',
-                        buttons : true,
-                        dangerMode : true,
+                        title: 'Confirmation of Change',
+                        text: 'Do you really want to update this data?',
+                        icon: 'warning',
+                        buttons: true,
+                        dangerMode: true,
                     }).then((willUpdate) => {
                         if (willUpdate) {
-                            // If user click on "OK", the form will be submitted.
+                            // If user clicks on "OK", the form will be submitted.
                             $('form').submit();
                         }
                     });

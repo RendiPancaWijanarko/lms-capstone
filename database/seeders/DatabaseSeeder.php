@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             SettingsTableSeeder::class,
             TeachersTableSeeder::class,
             CategoriesTableSeeder::class,
+            StudentsTableSeeder::class,
         ]);
     }
 }

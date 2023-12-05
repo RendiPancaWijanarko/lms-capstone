@@ -24,8 +24,8 @@ class StudentController extends Controller
         // Validasi data yang diterima dari formulir
         $validatedData = $request->validate([
             'name' => 'required|max:255',
+            'username' => 'required|max:255',
             'email' => 'required|email|unique:students|max:255',
-            'phone' => 'nullable|string',
         ]);
 
         // Simpan data ke dalam database
@@ -35,29 +35,29 @@ class StudentController extends Controller
         return redirect()->route('students.index');
     }
 
-    public function edit($id)
+    public function edit(Student $student)
     {
-        $student = Student::findOrFail($id);
-
-        return view('students.edit', compact('student'));
+        return view('students.edit', [
+            'student' => $student
+        ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
-        $student = Student::findOrFail($id);
-
-        // Validasi data yang diterima dari formulir
-        $validatedData = $request->validate([
+        // Validasi data formulir jika diperlukan
+        $validatedData = validator($request->all(), [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:students,email,' . $id,
-            'phone' => 'nullable|string',
-        ]);
+            'username' => 'required|max:255',
+            'email' => 'required|email|unique:students,email,'.$student->id.',id|max:255',
+        ])->validate();
 
-        // Update data di dalam database
-        $student->update($validatedData);
+        $student->name = $validatedData['name'];
+        $student->username = $validatedData['username'];
+        $student->email = $validatedData['email'];
+        $student->save();
 
-        // Redirect ke halaman index
-        return redirect()->route('students.index');
+        return redirect(route('students.index'))
+            ->with('success', 'Student updated successfully!');
     }
 
     public function destroy($id)
