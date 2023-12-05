@@ -27,18 +27,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($teachers as $teacher)
+                        @foreach ($students as $student)
                             <tr>
                                 <td>{{ $loop->index + 1 }}</td>
-                                <td>{{ $teacher->name }}</td>
+                                {{-- <td>{{ $teacher->name }}</td>
                                 <td>{{ $teacher->phone }}</td>
-                                <td>{{ $teacher->category->course_name }}</td>
+                                <td>{{ $teacher->category->course_name }}</td> --}}
                                 <td>
                                     {{-- <a href="{{ route('editTeacher', ['teacher' => $teacher->id]) }}" class="btn btn-warning btn-sm" role="button">Edit</a>
                                     <a onclick="confirmDelete(this)" data-url="{{ route('deleteTeacher', ['teacher' => $teacher->id]) }}" class="btn btn-danger btn-sm" role="button">Remove</a> --}}
                                 </td>
                             </tr>
-                        {{-- @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>
