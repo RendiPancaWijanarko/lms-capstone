@@ -4,7 +4,7 @@
     <a href="{{ route('home') }}" class="brand-link">
         <img src="{{  Config::get('settings.logo') }}" alt="{{  Config::get('settings.name') }}" class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">{{  Config::get('settings.name') }} <span class="right badge badge-danger">beta</span></span>
+        <span class="brand-text font-weight-light">{{  Config::get('settings.name') }} <span class="right badge badge-danger">Welcome</span></span>
     </a>
 
     <!-- Sidebar -->

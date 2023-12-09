@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
         // 2. Route Lihat Rincian Total Students
         Route::get('admin/students', 'StudentController@index')->name('students.index');
         // 3. Route Lihat Rincian Total Courses
-        Route::get('admin/courses', 'CourseController@index')->name('dataCourse');
+        Route::get('admin/courses', 'CourseController@index')->name('courses.index');
 
         // CRUD TEACHER //
         // 1. Create dan Simpan [BELUM TERPAKAI]

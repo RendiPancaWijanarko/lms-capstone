@@ -2,19 +2,19 @@
 
 @section('content')
 <div class="col-12">
-    {{ Breadcrumbs::render('courses.index') }}
+    {{-- {{ Breadcrumbs::render('courses.index') }} --}}
     <div class="card">
         <div class="card-header">
             <div class="d-flex align-items-center">
-                <h3 class="card-title mx-auto w-100">@lang('course/actions.index')</h3>
-                <a href="{{ route('courses.create') }}" class="btn btn-success">@lang('course/actions.new')</a>
+                {{-- <h3 class="card-title mx-auto w-100">@lang('course/actions.index')</h3>
+                <a href="{{ route('courses.create') }}" class="btn btn-success">@lang('course/actions.new')</a> --}}
             </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
             <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
-                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                    {{-- <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                         <thead>
                             <tr role="row">
                                 <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="">@lang('course/fields.id')</th>
@@ -55,7 +55,7 @@
                                 <th rowspan="1" colspan="1"></th>
                             </tr>
                         </tfoot>
-                    </table>
+                    </table> --}}
                 </div>
             </div>
         </div>

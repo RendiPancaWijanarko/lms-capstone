@@ -86,19 +86,17 @@ class TeacherController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'required|numeric',
-            'category' => 'required|exists:categories.id',
+            'category_id' => 'required',
         ])->validate();
 
         $teacher->name = $validatedData['name'];
         $teacher->email = $validatedData['email'];
         $teacher->phone = $validatedData['phone'];
-        $teacher->category = $validatedData['category'];
+        $teacher->category_id = $validatedData['category_id'];
         $teacher->save();
 
-        return redirect(route('teachers.index'))
-            ->with('success', 'Teacher updated successfully!');
+        return redirect(route('teachers.index'))->with('success', 'Teacher updated successfully!');
     }
-
 
     /**
      * Remove the specified resource from storage.

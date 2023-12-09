@@ -31,10 +31,11 @@ class CourseController extends Controller
     }
 
 
-    public function index(ListCourseUsecaseInterface $listCourseUsecase)
+    public function index()
     {
-        $courses = $listCourseUsecase->handle();
-        return view('courses.index', compact('courses'));
+        // $courses = $listCourseUsecase->handle();
+        // return view('courses.index', compact('courses'));
+        return view('courses.index');
     }
 
     public function show($id, ShowCourseUsecaseInterface $showCourseUsecase)
