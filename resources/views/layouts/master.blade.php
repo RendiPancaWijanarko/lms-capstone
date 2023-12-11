@@ -9,7 +9,7 @@
     <title>{{  Config::get('settings.name') }} | {{  Config::get('settings.description') }}</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel='icon' href='/favicon.ico' type='image/x-icon' >
+    <link rel='icon' href='/LMS-logo-_Capstone-Project_.ico' type='image/x-icon' >
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -53,7 +53,6 @@
             </div>
         </form>
 
-
     </nav>
     <!-- /.navbar -->
 
@@ -61,9 +60,8 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ route('home') }}" class="brand-link">
-            <img src="{{  Config::get('settings.logo') }}" alt="{{  Config::get('settings.name') }}" class="brand-image img-circle elevation-3"
-                 style="opacity: .8">
-            <span class="brand-text font-weight-light">{{  Config::get('settings.name') }} <span class="right badge badge-danger">beta</span></span>
+
+            <span class="brand-text font-weight-light">{{  Config::get('settings.name') }} <span class="right badge badge-danger">Welcome</span></span>
         </a>
 
         <!-- Sidebar -->
