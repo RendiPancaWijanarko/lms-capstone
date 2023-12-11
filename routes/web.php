@@ -18,11 +18,9 @@ Auth::routes(['verify' => true]);
 Route::get('/stream', 'HomeController@stream')->name('stream')->middleware('verified');
 
 Route::group( ['middleware' => ['auth']], function() {
+    Route::resource('courses', 'CourseController');
     Route::resource('roles', 'RoleController');
     Route::resource('lessons', 'LessonController')->except('create');
-    Route::resource('teachers', TeacherController::class);
-    Route::resource('students', StudentController::class);
-    Route::resource('courses', 'CourseController');
     Route::get('/lessons/create/{course}', 'LessonController@create')->name('lessons.create');
 });
 
@@ -30,38 +28,3 @@ Route::group( ['middleware' => ['auth']], function() {
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
-
-Route::middleware(['auth'])->group(function () {
-    // ROUTE DASHBOARD ADMIN
-    Route::get('admin/dashboard', 'AdminController@index')->name('admin.dashboard');
-        // 1. Route Lihat Rincian Total Teachers
-        Route::get('admin/teachers', 'TeacherController@index')->name('teacher.index');
-        // 2. Route Lihat Rincian Total Students
-        Route::get('admin/students', 'StudentController@index')->name('students.index');
-        // 3. Route Lihat Rincian Total Courses
-        Route::get('admin/courses', 'CourseController@index')->name('courses.index');
-
-        // CRUD TEACHER //
-        // 1. Create dan Simpan [BELUM TERPAKAI]
-        // Route::get('admin/teachers/create', 'TeacherController@create')->name('createTeacher');
-        // Route::post('admin/teachers/store', 'TeacherController@store')->name('storeTeacher');
-        // 2. Update (dan simpan)
-        // web.php
-        Route::get('teachers/{teacher}/edit', 'TeacherController@edit')->name('editTeacher');
-        Route::post('teachers/{teacher}/update', 'TeacherController@update')->name('updateTeacher');
-        // 3. Delete (dan alert)
-        Route::get('teacher/{teacher}/delete', 'TeacherController@destroy')->name('deleteTeacher');
-
-        //STUDENTS DASHBOARD//
-
-        // 2. Update (dan simpan)
-        Route::get('students/{student}/edit', 'StudentController@edit')->name('editStudent');
-        Route::post('students/{student}/update', 'StudentController@update')->name('updateStudent');
-        // 3. Delete (dan alert)
-        Route::get('student/{student}/delete', 'StudentController@destroy')->name('deleteStudent');
-});
-
-
-
-
-
