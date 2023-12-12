@@ -57,7 +57,7 @@ class CourseController extends Controller
         $result = $courseUsecase->handle($request->all());
 
         if($result['data']){
-            flash('Curso creado correctamente');
+            flash('Course created successfully!');
         } else {
             flash(implode('-', $result['errors']), 'error');
         }
