@@ -45,15 +45,6 @@
                             </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th rowspan="1" colspan="1">@lang('course/fields.id')</th>
-                                <th rowspan="1" colspan="1">@lang('course/fields.name')</th>
-                                <th rowspan="1" colspan="1">@lang('course/fields.description')</th>
-                                <th rowspan="1" colspan="1">@lang('course/fields.teacher')</th>
-                                <th rowspan="1" colspan="1"></th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>

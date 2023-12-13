@@ -47,7 +47,7 @@
         const subscribed = Boolean({!! $subscribed !!})
         if(!subscribed){
             Swal.fire({
-                title: 'Do you want subscribe this course',
+                title: 'Do you want to subscribe this course?',
                 inputAttributes: {
                     autocapitalize: 'true'
                 },
@@ -82,7 +82,7 @@
             }).then((result) => {
                 if (result.value) {
                     Swal.fire({
-                        title: `Suscrito`,
+                        title: `You are subscribed!`,
                     })
                 }
                 if(result.dismiss) {
