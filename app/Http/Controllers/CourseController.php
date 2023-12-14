@@ -77,7 +77,8 @@ class CourseController extends Controller
     public function update($id, UpdateRequest $request, UpdateCourseUsecaseInterface $courseUsecase)
     {
         $courseUsecase->handle($id, $request->all());
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect(route('courses.index'))->with('success', 'Teacher updated successfully!');
     }
 
     public function destroy($id, DeleteCourseUsecaseInterface $courseUsecase)

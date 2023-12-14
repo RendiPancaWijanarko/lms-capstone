@@ -37,7 +37,7 @@
             </div>
             <div class="col-12">
                 <a href="{{ route('courses.index') }}" class="btn btn-secondary">@lang('general.cancel')</a>
-                <input type="submit" value="@lang('course/actions.update')" class="btn btn-primary float-right">
+                <button type="submit" class="btn btn-primary float-right" onclick="confirmUpdate()">Update</button>
             </div>
         </div>
         <!-- /.card-body -->
@@ -46,7 +46,7 @@
     {{ Form::close() }}
 </div>
 
-<div class="col-md-12">
+{{-- <div class="col-md-12">
     <div id="accordion">
         <!-- we are adding the .class so bootstrap.js collapse plugin detects it -->
         <div class="card card-primary">
@@ -110,7 +110,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <!-- /.content -->
 @endsection

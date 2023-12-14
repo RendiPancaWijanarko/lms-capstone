@@ -1,5 +1,15 @@
 @extends('layouts.master')
 
+@section('addJavascript')
+{{-- START | INISIALISASI DATATABLES --}}
+    <script>
+        $(function(){
+            $('#data-table').DataTable();
+        })
+    </script>
+{{-- END | INISIALISASI DATATABLES --}}
+@endsection
+
 @section('content')
 <div class="col-12">
     <div class="card">
@@ -13,7 +23,7 @@
         <div class="card-body">
             <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
-                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                    <table class="table table-hover table-bordered" id="data-table">
                         <thead>
                             <tr role="row">
                                 <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="">@lang('course/fields.id')</th>
