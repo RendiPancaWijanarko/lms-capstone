@@ -30,3 +30,6 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 });
 
 Route::get('/teacher', 'TeacherController@index')->name('detailTeacher');
+
+// student
+Route::get('/student', 'StudentController@index');
