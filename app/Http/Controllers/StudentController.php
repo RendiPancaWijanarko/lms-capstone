@@ -16,7 +16,11 @@ class StudentController extends Controller
     {
         return view('student.dashboard');
     }
-
+    
+    public function showProfile()
+    {
+        return view('student.profil');
+    }
     /**
      * Show the form for creating a new resource.
      *

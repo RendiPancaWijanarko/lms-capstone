@@ -5,114 +5,107 @@
         <div class="row justify-content-center">
             {{-- Main Content --}}
             <div class="col-md-8">
-                <div class="card-header">{{ __('Welcome') }} {{ auth()->user()->name }}
-                </div>
-                {{-- Isi Profil --}}
-                <div class="card-body">
-                    <div class="col-sm-2 text-center text-sm-left">
-                        <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="img-fluid mb-3 border border-primary"
-                            style="border-radius: 50%;">
+                <div class="card">
+                    <div class="card-header">
+                        {{ __('Welcome') }} {{ auth()->user()->name }}
                     </div>
-                    <div class="col-sm-8">
-                        @php
-                            // Set the timezone to Jakarta (WIB)
-                            date_default_timezone_set('Asia/Jakarta');
+                    {{-- Isi Profil --}}
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4 text-center text-sm-left mb-3">
+                            <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="img-fluid border border-primary" style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto;">
+                            </div>
+                            <div class="col-sm-8">
+                                @php
+                                    // Set the timezone to Jakarta (WIB)
+                                    date_default_timezone_set('Asia/Jakarta');
 
-                            // Menentukan waktu saat ini
-                            $waktu = date('H');
+                                    // Menentukan waktu saat ini
+                                    $waktu = date('H');
 
-                            // Pesan selamat pagi, siang, sore, atau malam berdasarkan waktu
-                            if ($waktu < 12) {
-                                $pesan = 'Selamat Pagi';
-                            } elseif ($waktu < 15) {
-                                $pesan = 'Selamat Siang';
-                            } elseif ($waktu < 18) {
-                                $pesan = 'Selamat Sore';
-                            } else {
-                                $pesan = 'Selamat Malam';
-                            }
-                        @endphp
+                                    // Pesan selamat pagi, siang, sore, atau malam berdasarkan waktu
+                                    if ($waktu < 12) {
+                                        $pesan = 'Selamat Pagi';
+                                    } elseif ($waktu < 15) {
+                                        $pesan = 'Selamat Siang';
+                                    } elseif ($waktu < 18) {
+                                        $pesan = 'Selamat Sore';
+                                    } else {
+                                        $pesan = 'Selamat Malam';
+                                    }
+                                @endphp
 
+                                <h3 class="text-primary">{{ $pesan }}, <span id="username">{{ Auth::user()->name }}</span>!</h3>
+                                <h6>Selamat belajar {{ Auth::user()->name }}, semoga harimu menyenangkan. <br>Jangan lupa kerjakan tugas ya jika belum!</h6>
 
-                        <h3 class="text-primary">{{ $pesan }}, <span id="username">{{ Auth::user()->name }}</span>!
-                        </h3>
-                        <h6>Selamat belajar {{ Auth::user()->name }}, semoga harimu menyenangkan. <br>Jangan lupa kerjakan
-                            tugas ya jika belum!</h6>
-
-                        <a href="#" class="btn btn-sm btn-outline-primary" style="margin-top: 8%">Lihat Profil</a>
+                                <a href="{{ route('student.profil') }}" class="btn btn-sm btn-outline-primary mt-3">Lihat Profil</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-
             {{-- Pencapaian --}}
             <div class="col-md-4">
-                <div class="card-header text-center">
-                    Pencapaian
+                <div class="card">
+                    <div class="card-header text-center">
+                        Pencapaian
+                    </div>
+                    <div class="card-body">
+                        {{-- Isi Pencapaian --}}
+                        <div class="row">
+                            {{-- Tambahkan kartu pencapaian di sini --}}
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    {{-- Isi Pencapaian --}}
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 col-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="card-title d-flex align-items-start justify-content-between">
-                                        <div class="avatar">
-                                            <img src="{{ asset('/icon/file-edit.png') }}" alt="icon">
-                                        </div>
-                                    </div>
-                                    <span>Materi Yang Diambil</span>
-                                    <h3 class="card-title mb-1">10 Materi</h3>
-                                    <small class="text-success font-weight-medium"><i class="bx bx-up-arrow-alt"></i>
-                                        85%</small>
-                                </div>
-                            </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="avatar">
+                            <img src="{{ asset('/icon/file-edit.png') }}" alt="icon">
                         </div>
-                        <div class="col-lg-6 col-md-12 col-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="card-title d-flex align-items-start justify-content-between">
-                                        <div class="avatar">
-                                            <img src="{{ asset('/icon/book-bookmark.png') }}" alt="icon">
-                                        </div>
-                                    </div>
-                                    <span>Kelas yang Diambil</span>
-                                    <h3 class="card-title text-nowrap mb-1">3 Kelas</h3>
-                                    <small class="text-success font-weight-medium"><i class="bx bx-up-arrow-alt"></i>
-                                        85%</small>
-                                </div>
-                            </div>
+                        <span>Materi Yang Diambil</span>
+                        <h3 class="card-title mb-1">10 Materi</h3>
+                        <small class="text-success font-weight-medium"><i class="bx bx-up-arrow-alt"></i> 85%</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="avatar">
+                            <img src="{{ asset('/icon/book-bookmark.png') }}" alt="icon">
                         </div>
-                        <div class="col-lg-6 col-md-12 col-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="card-title d-flex align-items-start justify-content-between">
-                                        <div class="avatar">
-                                            <img src="{{ asset('/icon/book-bookmark.png') }}" alt="icon">
-                                        </div>
-                                    </div>
-                                    <span>Kelas yang Diambil</span>
-                                    <h3 class="card-title text-nowrap mb-1">3 Kelas</h3>
-                                    <small class="text-success font-weight-medium"><i class="bx bx-up-arrow-alt"></i>
-                                        85%</small>
-                                </div>
-                            </div>
+                        <span>Kelas yang Diambil</span>
+                        <h3 class="card-title text-nowrap mb-1">3 </h3>
+                        <small class="text-success font-weight-medium"><i class="bx bx-up-arrow-alt"></i> 85%</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="avatar">
+                            <img src="{{ asset('/icon/book-bookmark.png') }}" alt="icon">
                         </div>
-                        <div class="col-lg-6 col-md-12 col-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="card-title d-flex align-items-start justify-content-between">
-                                        <div class="avatar">
-                                            <img src="{{ asset('/icon/book-bookmark.png') }}" alt="icon">
-                                        </div>
-                                    </div>
-                                    <span>Kelas yang Diambil</span>
-                                    <h3 class="card-title text-nowrap mb-1">3 Kelas</h3>
-                                    <small class="text-success font-weight-medium"><i class="bx bx-up-arrow-alt"></i>
-                                        85%</small>
-                                </div>
-                            </div>
+                        <span>Daftar Tugas</span>
+                        <h3 class="card-title text-nowrap mb-1">3 Kelas</h3>
+                        <small class="text-success font-weight-medium"><i class="bx bx-up-arrow-alt"></i> 85%</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="avatar">
+                            <img src="{{ asset('/icon/book-bookmark.png') }}" alt="icon">
                         </div>
+                        <span>Kelas yang Diambil</span>
+                        <h3 class="card-title text-nowrap mb-1">3 Kelas</h3>
+                        <small class="text-success font-weight-medium"><i class="bx bx-up-arrow-alt"></i> 85%</small>
                     </div>
                 </div>
             </div>
@@ -180,29 +173,6 @@
                     <div class="card-body">
                         {{-- Isi Chat Diskusi --}}
                     </div>
-                </div>
-            </div>
-        </div>
-
-        {{-- untuk di profil nanti --}}
-        <div class="row mt-3">
-            <div class="col-md-4 col-xl-3">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <h5 class="card-tittle mb-0">profile</h5>
-                    </div>
-                    <div class="card-body text-center">
-                        <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="img-fluid mb-3 border border-primary"
-                            style="border-radius: 50%;">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8 col-xl-9">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-tittle mb-0">Detail</h5>
-                    </div>
-                    <div class="card-body h-100"></div>
                 </div>
             </div>
         </div>

@@ -33,3 +33,4 @@ Route::get('/teacher', 'TeacherController@index')->name('detailTeacher');
 
 // student
 Route::get('/student', 'StudentController@index');
+Route::get('/student/profil', 'StudentController@showProfile')->name('student.profil');
