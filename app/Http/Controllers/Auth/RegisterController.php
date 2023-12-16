@@ -101,7 +101,8 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
-        $this->assignRoleUserUsecase->handle($user->id, 'User');
+        // $this->assignRoleUserUsecase->handle($user->id, 'User');
+        $this->assignRoleUserUsecase->handle($user->id, $request->role);
     }
 
 
