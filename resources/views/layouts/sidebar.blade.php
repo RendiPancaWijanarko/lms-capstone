@@ -14,7 +14,7 @@
                     <img src="{{ Auth::user()->avatar }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                    <a href="{{ route('detailTeacher') }}" class="d-block">{{ Auth::user()->name }}</a>
                 </div>
             </div>
 
@@ -30,6 +30,15 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item has-treeview">
+                        <a href="{{ route('detailSchedule') }}" class="nav-link {{ is_active('schedule') }}">
+                            <i class="nav-icon far fa-clock"></i>
+                             <p>
+                                 {{ __('Schedule') }}
+                            </p>
+                         </a>
+                    </li>
+
                     <li class="nav-item">
                         <a href="{{ route('stream') }}" class="nav-link  {{ is_active('stream') }}">
                             <i class="nav-icon fas fa-play"></i>
