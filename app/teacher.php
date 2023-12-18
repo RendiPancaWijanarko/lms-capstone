@@ -10,7 +10,10 @@ class teacher extends Model
     protected $table = "teacher";
     protected $fillable = [
         'nama',
-        'deskripsi',
+        // 'deskripsi',
+        'email',
+        'no_telepon',
+        'kategori',
     ];
 }
  

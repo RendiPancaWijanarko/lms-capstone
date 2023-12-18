@@ -13,6 +13,7 @@ class CreateSchedulesTable extends Migration
      */
     public function up()
     {
+        // if(Schema::hasTable('schedule')) return;
         Schema::create('schedule', function (Blueprint $table) {
             $table->id();
             $table->string('class_name');
