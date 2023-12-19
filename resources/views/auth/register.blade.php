@@ -106,7 +106,6 @@
                                 <select id="role" class="form-control @error('role') is-invalid @enderror" name="role" onchange="checkRole();" required>
                                     <option value="User" {{ old('role') == 'User' ? 'selected' : '' }}>Student</option>
                                     <option value="Teacher" {{ old('role') == 'Teacher' ? 'selected' : '' }}>Teacher</option>
-                                    <option value="Admin" {{ old('role') == 'Admin' ? 'selected' : '' }}>Admin</option>
                                 </select>
 
                                 @error('role')
