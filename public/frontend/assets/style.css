@@ -805,6 +805,75 @@ body.dark-theme {
     color: hsl(0, 0%, 15%);
 }
 
+/* feedback form */
+.feedback-form {
+    margin-top: -40px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 50px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--title-color);
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: var(--button-color);
+    color: #fff;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--button-color-alt);
+}
+
+/* feedback form in dark mode */
+body.dark-theme .feedback-form {
+    background-color: var(--container-color);
+    color: var(--text-color);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .feedback-form label {
+    color: var(--text-color);
+}
+
+body.dark-theme .feedback-form input,
+body.dark-theme .feedback-form textarea {
+    background-color: hsl(0, 0%, 12%);
+    border-color: hsl(0, 0%, 20%);
+    color: var(--text-color);
+}
+
+body.dark-theme .feedback-form button {
+    background-color: var(--button-color);
+    color: #fff;
+}
+
+body.dark-theme .feedback-form button:hover {
+    background-color: var(--button-color-alt);
+}
+
 /* footer style */
 .footer-container {
     row-gap: 2rem;

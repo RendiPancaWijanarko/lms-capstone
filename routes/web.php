@@ -30,6 +30,11 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
+// Welcome Page
+    // 1. Form Feedback
+    Route::get('/feedback/create', 'FeedbackController@create')->name('feedback.create');
+    Route::post('/feedback', 'FeedbackController@store')->name('feedback.store');
+
 Route::get('/teacher', 'TeacherController@index')->name('detailTeacher');
 
 

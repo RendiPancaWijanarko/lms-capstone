@@ -18,7 +18,7 @@
                 </p>
                 <div class="home-btns">
                     <a href="{{ route('courses.index') }}" class="button btn-gray btn-small"> My Course </a>
-                    <a href="#course" class="button button-home">Reach Us</a>
+                    <a href="#feedback-form" class="button button-home">Reach Us</a>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                 <p class="story-description">
                     Learn to make something with real-world projects that help you increase creativity.
                 </p>
-                <a href="#course" class="button btn-small">Reach us</a>
+                <a href="#feedback-form" class="button btn-small">Reach us</a>
             </div>
             <div class="story-images">
                 <img src="{{ asset('frontend/assets/images/goals.jpg') }}" alt="" class="story-img" />
@@ -104,4 +104,54 @@
             </div>
         </div>
     </section>
+
+    <section id="feedback-form" class="feedback section container">
+        <div class="feedback-container grid">
+            <div class="feedback-form">
+                <h2 class="section-title feedback-section-title">Give Us Your Feedback</h2>
+                <form id="feedbackForm" action="{{ route('feedback.store') }}" method="post">
+                    @csrf
+                    <label for="full_name">Full Name:</label>
+                    <input type="text" name="full_name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" required>
+
+                    <label for="phone_number">Phone Number:</label>
+                    <input type="tel" name="phone_number" required>
+
+                    <label for="subject">Subject:</label>
+                    <input type="text" name="subject" required>
+
+                    <label for="message">Message:</label>
+                    <textarea name="message" rows="4" required></textarea>
+
+                    <button type="button" onclick="confirmSendMessage()">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    @push('scripts')
+    <script>
+        function confirmSendMessage() {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Do you want to send this message?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, send it!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('feedbackForm').submit();
+                } else {
+                    Swal.fire("Message not sent.", "", "error");
+                }
+            });
+        }
+    </script>
+    @endpush
+
 @endsection
