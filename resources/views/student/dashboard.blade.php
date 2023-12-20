@@ -1,10 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row justify-content-center">
+    <div class="container">
+        <div class="row">
+
             {{-- Main Content --}}
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         {{ __('Welcome') }} {{ auth()->user()->name }}
@@ -13,7 +14,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-4 text-center text-sm-left mb-3">
-                            <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="img-fluid border border-primary" style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto;">
+                                <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="img-fluid border border-primary"
+                                    style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto;">
                             </div>
                             <div class="col-sm-8">
                                 @php
@@ -35,136 +37,104 @@
                                     }
                                 @endphp
 
-                                <h3 class="text-primary">{{ $pesan }}, <span id="username">{{ Auth::user()->name }}</span>!</h3>
-                                <h6>Selamat belajar {{ Auth::user()->name }}, semoga harimu menyenangkan. <br>Jangan lupa kerjakan tugas ya jika belum!</h6>
+                                <h3 class="text-success">{{ $pesan }}, <span
+                                        id="username">{{ Auth::user()->name }}</span>!</h3>
+                                <h6>Selamat belajar {{ Auth::user()->name }}, semoga harimu menyenangkan. <br>Jangan lupa
+                                    kerjakan tugas ya jika belum!</h6>
 
-                                <a href="{{ route('student.profil') }}" class="btn btn-sm btn-outline-primary mt-3">Lihat Profil</a>
+                                <a href="{{ route('student.profil') }}" class="btn btn-sm btn-outline-success mt-3">Lihat
+                                    Profil</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            {{-- Pencapaian --}}
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header text-center">
-                        Pencapaian
-                    </div>
-                    <div class="card-body">
-                        {{-- Isi Pencapaian --}}
-                        <div class="row">
-                            {{-- Tambahkan kartu pencapaian di sini --}}
-                        </div>
-                    </div>
-                </div>
+                {{-- End Main Content --}}
             </div>
         </div>
+
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <div class="avatar">
-                            <img src="{{ asset('/icon/file-edit.png') }}" alt="icon">
-                        </div>
-                        <span>Materi Yang Diambil</span>
-                        <h3 class="card-title mb-1">10 Materi</h3>
-                        <small class="text-success font-weight-medium"><i class="bx bx-up-arrow-alt"></i> 85%</small>
+
+            <!-- Schedule Card -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card mb-4 text-center">
+                    <div class="card-body">
+                        <h1><i class="fas fa-calendar-alt" style="color: #28a745;"></i></h1>
+                        <h5> Schedule </h5>
+                        <!-- Add your schedule content here -->
+                    </div>
+                    <div class="card-footer mb-0 bg-success">
+                        <a href="" class="text-decoration-none">
+                            Akses Jadwal disini
+                            <span class="ml-2 d-inline-block">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <div class="avatar">
-                            <img src="{{ asset('/icon/book-bookmark.png') }}" alt="icon">
-                        </div>
-                        <span>Kelas yang Diambil</span>
-                        <h3 class="card-title text-nowrap mb-1">3 </h3>
-                        <small class="text-success font-weight-medium"><i class="bx bx-up-arrow-alt"></i> 85%</small>
+
+            <!-- Class Card -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card mb-4 text-center">
+                    <div class="card-body">
+                        <h1><i class="fas fa-book" style="color: #28a745;"></i></h1>
+                        <h5> Kelas </h5>
+                        <!-- Add your schedule content here -->
+                    </div>
+                    <div class="card-footer mb-0 bg-success">
+                        <a href="" class="text-decoration-none">
+                            Akses Kelas disini
+                            <span class="ml-2 d-inline-block">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <div class="avatar">
-                            <img src="{{ asset('/icon/book-bookmark.png') }}" alt="icon">
-                        </div>
-                        <span>Daftar Tugas</span>
-                        <h3 class="card-title text-nowrap mb-1">3 Kelas</h3>
-                        <small class="text-success font-weight-medium"><i class="bx bx-up-arrow-alt"></i> 85%</small>
+
+            <!-- Grades Card -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card mb-4 text-center">
+                    <div class="card-body">
+                        <h1><i class="fas fa-graduation-cap" style="color: #28a745;"></i></h1>
+                        <h5> Nilai </h5>
+                        <!-- Add your schedule content here -->
+                    </div>
+                    <div class="card-footer mb-0 bg-success">
+                        <a href="" class="text-decoration-none">
+                            Akses Nilai disini
+                            <span class="ml-2 d-inline-block">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <div class="avatar">
-                            <img src="{{ asset('/icon/book-bookmark.png') }}" alt="icon">
-                        </div>
-                        <span>Kelas yang Diambil</span>
-                        <h3 class="card-title text-nowrap mb-1">3 Kelas</h3>
-                        <small class="text-success font-weight-medium"><i class="bx bx-up-arrow-alt"></i> 85%</small>
+
+            <!-- Attendance Card -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card mb-4 text-center">
+                    <div class="card-body">
+                        <h1><i class="fas fa-check-circle" style="color: #28a745;"></i></h1>
+                        <h5> Absensi </h5>
+                        <!-- Add your schedule content here -->
+                    </div>
+                    <div class="card-footer mb-0 bg-success">
+                        <a href="" class="text-decoration-none">
+                            Akses Absensi disini
+                            <span class="ml-2 d-inline-block">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
+
         </div>
+        <!-- End Grid of Cards -->
 
-        <div class="row mt-3">
-            {{-- Akses Materi --}}
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        Akses Materi
-                    </div>
-                    <div class="card-body">
-                        {{-- Isi Akses Materi --}}
-                    </div>
-                </div>
-            </div>
-
-            {{-- Akses Proyek --}}
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        Akses Proyek
-                    </div>
-                    <div class="card-body">
-                        {{-- Isi Akses Proyek --}}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row mt-3">
-            {{-- Akses Sertifikat --}}
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        Akses Absensi
-                    </div>
-                    <div class="card-body">
-                        {{-- Isi Akses Sertifikat --}}
-                    </div>
-                </div>
-            </div>
-
-            {{-- Akses Graduation --}}
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        Akses Sertifikat
-                    </div>
-                    <div class="card-body">
-                        {{-- Isi Akses Graduation --}}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row mt-3">
-            {{-- Chat Diskusi --}}
+        {{-- Chat Diskusi --}}
+        <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -176,5 +146,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 @endsection
