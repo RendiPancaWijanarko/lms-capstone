@@ -1,12 +1,3 @@
-# LMS-Laravel
-[![Latest Stable Version](https://poser.pugx.org/lms-laravel/lms-laravel/v/stable)](https://packagist.org/packages/lms-laravel/lms-laravel)
-[![Total Downloads](https://poser.pugx.org/lms-laravel/lms-laravel/downloads)](https://packagist.org/packages/lms-laravel/lms-laravel)
-[![Latest Unstable Version](https://poser.pugx.org/lms-laravel/lms-laravel/v/unstable)](https://packagist.org/packages/lms-laravel/lms-laravel)
-[![License](https://poser.pugx.org/lms-laravel/lms-laravel/license)](https://packagist.org/packages/lms-laravel/lms-laravel)
-
-- [About](#about)
-- [License](#license)
-
 ### About
 LMS-Laravel is a Learning Management System (or LMS) that facilitates the creation of educational content by allowing you to manage courses and learning modules. The platform is simple and intuitive and provides features for:
 1. The Teacher (course creator)
@@ -39,8 +30,6 @@ NOCAPTCHA_SITEKEY=xxxxxxxxxx
 NOCAPTCHA_SECRET=xxxxxxxxxxx
 ```
 
-Email settings (using a provider like Mailgun, Amazon SES, etc)
-
 * Run `php artisan key:generate`
 * Run `php artisan migrate`
 * For Auth API (to configure Laravel Passport), run: `php artisan passport:install`
@@ -50,7 +39,3 @@ Email settings (using a provider like Mailgun, Amazon SES, etc)
 * Start the Laravel server `php artisan serve --port=8000`
 
 * Start the Websocket server (for chat functionality) `php artisan websockets:serve`
-
-
-### License
-LMS-Laravel is licensed under the MIT license. Enjoy!
