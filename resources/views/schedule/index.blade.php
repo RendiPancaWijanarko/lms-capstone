@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('addCss')
-<link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
 @endsection
 
 @section('addJavascript')
@@ -52,6 +52,10 @@
 <!-- Main content -->
 <div class="content">
     <div class="container-fluid">
+    <div class="card">
+			<div class="card-header text-right">
+				<a href="{{ route('createSchedule') }}" class="btn btn-primary" role="button">Add Schedule</a>
+			</div>
         <div class="card-body">
             <table class="table table-hover table-bordered mb-0" id="data-table">
                 <thead>
@@ -73,8 +77,8 @@
                         <td> {{ $schedule->description }} </td>
                         <td><a href="{{ $schedule->meet_link }}" target="_blank">Join Class</a></td>
                         <td>
-                            <a href="" class="btn btn-warning btn-sm" role="button">Edit</a>
-                            <a onclick="confirmDelete(this)" data-url="" class="btn btn-danger btn-sm" role="button">Hapus</a>
+                            <a href="{{ route('editSchedule', ['schedule'=> $schedule->id]) }}" class="btn btn-warning btn-sm" role="button">Update</a>
+                            <a onclick="confirmDelete(this)" data-url="{{ route('deleteSchedule', ['schedule'=> $schedule->id]) }}" class="btn btn-danger btn-sm" role="button">Delete</a>
                         </td>
                     </tr>
                     @endforeach

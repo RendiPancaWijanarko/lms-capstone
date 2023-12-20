@@ -29,13 +29,24 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
+//teacher
 Route::get('/teacher', 'TeacherController@index')->name('detailTeacher');
+
+Route::get('/teacher/{teacher}/edit', 'TeacherController@edit')->name('editTeacher');
+Route::post('/teacher/{teacher}/edit', 'TeacherController@update')->name('updateTeacher');
 
 
 // student
 Route::get('/student', 'StudentController@index');
 Route::get('/student/profil', 'StudentController@showProfile')->name('student.profil');
 
-
+//schedule
 Route::get('/schedule', 'SchedulesController@index')->name('detailSchedule');
 
+Route::get('/schedule/create', 'SchedulesController@create')->name('createSchedule');
+Route::post('/schedule/create', 'SchedulesController@store')->name('storeSchedule');
+
+Route::get('/schedule/{schedule}/edit', 'SchedulesController@edit')->name('editSchedule');
+Route::post('/schedule/{schedule}/edit', 'SchedulesController@update')->name('updateSchedule');
+
+Route::get('/schedule/{schedule}/delete', 'SchedulesController@destroy')->name('deleteSchedule');

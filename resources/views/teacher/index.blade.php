@@ -53,34 +53,60 @@ confirmDelete = function(button) {
 <!-- Main content -->
 <div class="content">
 	<div class="container-fluid">
-			<div class="card-body">
-				<table class="table table-hover table-bordered mb-0" id="data-table">
-					<thead>
-						<tr>
-							<th>No.</th>
-							<th>Name</th>
-							<th>teacher description</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-					@foreach ($teachers as $teacher)
-<tr>
-    <td> {{ $loop->index + 1 }}</td>
-    <td> {{ $teacher->nama }}</td>
-    <td> {{ $teacher->deskripsi }} </td>
-    <td>
-        <a href="" class="btn btn-warning btn-sm" role="button">Edit</a>
-		<a onclick="confirmDelete(this)" data-url="" class="btn btn-danger btn-sm" role="button">Hapus</a>
+	<div class="card-body">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-3 d-flex align-items-center justify-content-center">
+                    <img src="{{ Auth::user()->avatar }}" class="img-circle elevation-2" alt="User Image" style="width: 150px; height: 150px;">
+                </div>
+                @foreach ($teachers as $teacher)
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <div class="row mb-2">
+                            <div class="col-md-12">
+                                <label for="name" class="form-label"><strong>Name:</strong></label>
+                                <p style="border: 2px solid #000; padding: 10px; margin-bottom: 10px;">{{ $teacher->nama }}</p>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-12">
+                                <label for="email" class="form-label"><strong>Email:</strong></label>
+                                <p style="border: 2px solid #000; padding: 10px; margin-bottom: 10px;">{{ $teacher->email }}</p>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-12">
+                                <label for="phone" class="form-label"><strong>Phone:</strong></label>
+                                <p style="border: 2px solid #000; padding: 10px; margin-bottom: 10px;">{{ $teacher->phone }}</p>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-12">
+                                <label for="category" class="form-label"><strong>Category:</strong></label>
+                                <p style="border: 2px solid #000; padding: 10px; margin-bottom: 10px;">{{ $teacher->category }}</p>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                        <div class="col-md-12">
+                            <label for="description" class="form-label"><strong>Description:</strong></label>
+                         <textarea style="width: 100%; border: 2px solid #000; padding: 10px; margin-bottom: 10px;">{{ $teacher->deskripsi }}</textarea>
+                        </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12 text-end">
+                                <div class="btn-group" role="group" aria-label="Action buttons">
+                                    <a href="{{ route('editTeacher', ['teacher'=> $teacher->id]) }}" class="btn btn-warning btn-sm" role="button">Update</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
 
-    </td>
-</tr>
-@endforeach
-					</tbody>
-				</table>
-			</div>
 
-		</div>
 
 	</div><!-- /.container-fluid -->
 </div>

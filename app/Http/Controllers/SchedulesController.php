@@ -27,7 +27,7 @@ class SchedulesController extends Controller
      */
     public function create()
     {
-        //
+        return view('schedule.create');
     }
 
     /**
@@ -38,7 +38,15 @@ class SchedulesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = validator($request->all(),[
+            'class_name' => 'required|string|max:100',
+            'date_schedule' => 'required|date',
+            'description' => 'required|string',
+            'meet_link' => 'required|string',
+        ])->validate();
+        $schedule = new Schedule($validateData);
+        $schedule->save();
+        return redirect(route('detailSchedule'))->with('success', 'Data Berhasil Di simpan');;
     }
 
     /**
@@ -60,7 +68,9 @@ class SchedulesController extends Controller
      */
     public function edit(Schedule $schedule)
     {
-        //
+        return view('schedule.edit', [
+            'schedule' => $schedule
+        ]);
     }
 
     /**
@@ -72,7 +82,21 @@ class SchedulesController extends Controller
      */
     public function update(Request $request, Schedule $schedule)
     {
-        //
+        $validateData = validator($request->all(), [
+            'class_name' => 'required|string|max:100',
+            'date_schedule' => 'required|date',
+            'description' => 'required|string',
+            'meet_link' => 'required|string',
+        ])->validate();
+        
+        $schedule->class_name = $validateData['class_name'];
+        $schedule->date_schedule = $validateData['date_schedule'];
+        $schedule->description = $validateData['description'];
+        $schedule->meet_link = $validateData['meet_link'];
+        $schedule->save();
+        
+        return redirect(route('detailSchedule'))->with('success', 'Data Berhasil Diupdate');
+        
     }
 
     /**
@@ -83,6 +107,7 @@ class SchedulesController extends Controller
      */
     public function destroy(Schedule $schedule)
     {
-        //
+        $schedule->delete();
+        return redirect(route('detailSchedule'))->with('success', 'Data Berhasil Di hapus');;
     }
 }

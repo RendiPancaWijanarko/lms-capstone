@@ -60,7 +60,9 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        //
+        return view('teacher.edit', [
+            'teacher' => $teacher
+        ]);
     }
 
     /**
@@ -72,9 +74,24 @@ class TeacherController extends Controller
      */
     public function update(Request $request, Teacher $teacher)
     {
-        //
+        $validateData = validator($request->all(), [
+            'nama' => 'required|string|max:100',
+            'email' => 'required|string',
+            'phone' => 'required|string',
+            'category' => 'required|string',
+            'deskripsi' => 'required|string',
+        ])->validate();
+        
+        $teacher->nama = $validateData['nama'];
+        $teacher->email = $validateData['email'];
+        $teacher->phone = $validateData['phone'];
+        $teacher->category = $validateData['category'];
+        $teacher->deskripsi = $validateData['deskripsi'];
+        $teacher->save();
+        
+        return redirect(route('detailTeacher'));
+        
     }
-
     /**
      * Remove the specified resource from storage.
      *
