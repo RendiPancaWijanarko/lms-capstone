@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Entities\User;
+use App\teacher;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -55,7 +56,7 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-       app(MasterVerifier::class)->verify($request->all(), $this->verifiers);
+        app(MasterVerifier::class)->verify($request->all(), $this->verifiers);
 
         $this->validator($request->all())->validate();
 
@@ -80,6 +81,8 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'username' => ['required', 'string', 'max:255', 'unique:users,username'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['required_if:role,==,Teacher', 'nullable', 'numeric', 'digits:12'],
+            'other' => ['required_if:category,==,other', 'nullable', 'string'],
         ]);
     }
 
@@ -91,12 +94,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        if ($data['role'] == "Teacher") {
+            $userId = $user->id;
+            $cat = $data['category'] == "other" ? $data['other'] : $data['category'];
+            teacher::create([
+                'nama' => $data['name'],
+                'email' => $data['email'],
+                'no_telepon' => $data['phone'],
+                'kategori' => $cat,
+                'id' => $userId,
+            ]);
+        }
+
+        return $user;
     }
 
     protected function registered(Request $request, $user)

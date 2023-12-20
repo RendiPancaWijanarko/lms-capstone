@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/', 'WelcomeController@index')->name('welcome');
 
 Auth::routes(['verify' => true]);
 
@@ -29,7 +30,15 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
+<<<<<<< HEAD
 //teacher
+=======
+// Welcome Page
+    // 1. Form Feedback
+    Route::get('/feedback/create', 'FeedbackController@create')->name('feedback.create');
+    Route::post('/feedback', 'FeedbackController@store')->name('feedback.store');
+
+>>>>>>> 5835c5a5c12aaec61fa242186a15d7afb8bc6308
 Route::get('/teacher', 'TeacherController@index')->name('detailTeacher');
 
 Route::get('/teacher/{teacher}/edit', 'TeacherController@edit')->name('editTeacher');

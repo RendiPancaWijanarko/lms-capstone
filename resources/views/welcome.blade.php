@@ -1,97 +1,157 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.front')
 
-        <title>{{ env('APP_NAME') }}</title>
+@section('content')
+    <section class="home" id="home">
+        <div class="home-container container grid">
+            <div class="home-img-bg">
+                {{-- in the style.css --}}
+            </div>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-        <link rel='icon' href='favicon.ico' type='image/x-icon'/ >
-        @include('includes.analytics')
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">@lang('Login')</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">@lang('Register')</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    {{ env('APP_NAME') }}
-                </div>
-
-                <div class="links">
-                    <a href="{{ env('APP_FB') }}" target="_blank">Facebook</a>
-                    <a href="{{ env('APP_AUTHOR_URL') }}" target="_blank">Fundador: {{ env('APP_AUTHOR_NAME') }}</a>
+            <div class="home-data">
+                <h1 class="home-title">
+                    We Teach You <br />
+                    Everything You Need To Know
+                </h1>
+                <p class="home-description">
+                    Discover the way you learn & take control of your life and make
+                    something useful for others.
+                </p>
+                <div class="home-btns">
+                    <a href="{{ route('courses.index') }}" class="button btn-gray btn-small"> My Course </a>
+                    <a href="#feedback-form" class="button button-home">Reach Us</a>
                 </div>
             </div>
         </div>
-        <scrip src="{{ asset('js/app.js') }}"></scrip>
-    </body>
-</html>
+    </section>
+
+    <section class="story section container">
+        <div class="story-container grid">
+            <div class="story-data">
+                <h2 class="section-title story-section-title">Our Goals</h2>
+                <h1 class="story-title">
+                    Enjoy learning without any pressure
+                </h1>
+
+                <p class="story-description">
+                    Learn to make something with real-world projects that help you increase creativity.
+                </p>
+                <a href="#feedback-form" class="button btn-small">Reach us</a>
+            </div>
+            <div class="story-images">
+                <img src="{{ asset('frontend/assets/images/goals.jpg') }}" alt="" class="story-img" />
+                <div class="story-square"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial section container">
+        <div class="testimonial grid">
+            <div class="swiper testimonial-swipper">
+                <div class="swiper-wrapper">
+
+                    <!-- Testimonial Card 1 -->
+                    <div class="testimonial-card swiper-slide" style="text-align: center;">
+                        <div class="testimonial-quote">
+                            <i class="bx bxs-quote-alt-left"></i>
+                        </div>
+                        <p class="testimonial-description">
+                            Di balik setiap pencapaian dan setiap langkah maju,
+                            ada sosok-sosok visioner yang menjadi pionir, membimbing kita melalui tantangan,
+                            dan memimpin kita menuju masa depan yang lebih baik.
+                        </p>
+                        <h3 class="testimonial-date">December 19, 2023</h3>
+
+                        <div class="testimonial-profile" style="justify-content: center;flex-direction: column;row-gap: 1.4rem;">
+                            <img src="{{ asset('frontend/assets/images/Rendi GDSC.png') }}" alt="" class="testimonial-profile-img" />
+
+                            <div class="testimonial-profile-data">
+                                <span class="testimonial-profile-name">Rendi P Wijanarko</span>
+                                <span class="testimonial-profile-detail">Founder of FlyHigh Corp.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial Card 2 -->
+                    <div class="testimonial-card swiper-slide" style="text-align: center;">
+                        <div class="testimonial-quote">
+                            <i class="bx bxs-quote-alt-left"></i>
+                        </div>
+                        <p class="testimonial-description">
+                            Pemimpin adalah individu yang memulai perjalanan ini dengan visi besar,
+                            ketekunan tanpa batas, dan tekad untuk menciptakan dampak positif.
+                        </p>
+                        <h3 class="testimonial-date">December 20, 2023</h3>
+
+                        <div class="testimonial-profile" style="justify-content: center;flex-direction: column;row-gap: 1.4rem;">
+                            <img src="{{ asset('frontend/assets/images/testimonial1.jpg') }}" alt="" class="testimonial-profile-img" />
+
+                            <div class="testimonial-profile-data">
+                                <span class="testimonial-profile-name">Yusrizal Anastya Tomo</span>
+                                <span class="testimonial-profile-detail">CEO of Modern LMS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Testimonial Slider Navigation -->
+                <div class="swiper-button-next" style="right: 30%;left: initial;top: initial;bottom: 3rem;">
+                    <i class="bx bx-right-arrow-alt"></i>
+                </div>
+                <div class="swiper-button-prev" style="right: initial;left: 30%;top: initial;bottom: 3rem;">
+                    <i class="bx bx-left-arrow-alt"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="feedback-form" class="feedback section container">
+        <div class="feedback-container grid">
+            <div class="feedback-form">
+                <h2 class="section-title feedback-section-title">Give Us Your Feedback</h2>
+                <form id="feedbackForm" action="{{ route('feedback.store') }}" method="post">
+                    @csrf
+                    <label for="full_name">Full Name:</label>
+                    <input type="text" name="full_name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" required>
+
+                    <label for="phone_number">Phone Number:</label>
+                    <input type="tel" name="phone_number" required>
+
+                    <label for="subject">Subject:</label>
+                    <input type="text" name="subject" required>
+
+                    <label for="message">Message:</label>
+                    <textarea name="message" rows="4" required></textarea>
+
+                    <button type="button" onclick="confirmSendMessage()">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    @push('scripts')
+    <script>
+        function confirmSendMessage() {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Do you want to send this message?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, send it!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('feedbackForm').submit();
+                } else {
+                    Swal.fire("Message not sent.", "", "error");
+                }
+            });
+        }
+    </script>
+    @endpush
+
+@endsection
