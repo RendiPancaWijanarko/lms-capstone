@@ -13,9 +13,6 @@
     <!-- swiper css -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/libraries/swiper.css') }}" />
 
-    {{-- SweetAlert2 --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/style.css') }}" />
 
@@ -35,7 +32,8 @@
     </div>
 
     <main class="main container">
-     @yield('content')
+        @include('sweetalert::alert')
+        @yield('content')
     </main>
 
     <footer class="footer section">
@@ -101,6 +99,90 @@
       <i class="bx bx-up-arrow-alt scroll-up-icon"></i>
     </a>
 
+    <!-- Sweetalert -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
+    <script src="{{asset('js/sweetalert.min.js')}}"></script>
+    <!-- | DATA TABLE | -->
+    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    @yield('scripts')
+
+    {{-- START | ALERT TAMBAH, EDIT, HAPUS DATA --}}
+        <script>
+            confirmDelete = function(button){
+                var url = $(button).data('url');
+                swal({
+                    'title' : 'Confirmation of Removal',
+                    'text'  : 'Do you really want to remove this data?',
+                    'dangermode'    : true,
+                    'buttons'       : true
+                }).then(function(value){
+                    if(value){
+                        window.location = url;
+                    }
+                })
+            }
+        </script>
+        <script>
+            function confirmUpdate() {
+                event.preventDefault();
+                swal({
+                    title   : 'Confirmation of Change',
+                    text    : 'Do you really want to update this data?',
+                    icon    : 'warning',
+                    buttons : true,
+                    dangerMode : true,
+                }).then((willUpdate) => {
+                    if (willUpdate) {
+                        // Jika user menekan "Ok", submit form
+                        $('form').submit();
+                    }
+                });
+            }
+        </script>
+        <script>
+            function confirmCreate() {
+                event.preventDefault();
+                swal({
+                    title   : 'Confirmation of Create',
+                    text    : 'Do you really want to add this data',
+                    icon    : 'warning',
+                    buttons : true,
+                    dangerMode : true,
+                }).then((willUpdate) => {
+                    if (willUpdate) {
+                        // Jika user menekan "Ok", submit form
+                        $('form').submit();
+                    }
+                });
+            }
+        </script>
+        <script>
+            function confirmFeedback() {
+                // Menampilkan Sweet Alert
+                swal({
+                    title: "Are you sure?",
+                    text: "Do you want to send this feedback?",
+                    icon: "warning",
+                    buttons: ["No, cancel", "Yes, send it!"],
+                }).then((willSend) => {
+                    // Jika pengguna mengonfirmasi pengiriman, lanjutkan dengan pengiriman formulir
+                    if (willSend) {
+                        // Memanggil fungsi submitForm setelah konfirmasi
+                        submitForm();
+                    }
+                });
+            }
+
+            // Fungsi untuk mengirim formulir
+            function submitForm() {
+                // Mendapatkan formulir dan mengirimkan data formulir
+                const feedbackForm = document.getElementById("feedbackForm");
+                feedbackForm.submit();
+            }
+        </script>
+    {{-- END | ALERT TAMBAH, EDIT, HAPUS DATA --}}
     <!-- swiper -->
     <script src="{{ asset('frontend/assets/libraries/swiper.js') }}"></script>
     <!--===== MAIN JS =====-->

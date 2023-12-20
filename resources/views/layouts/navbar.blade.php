@@ -14,13 +14,13 @@
                 <li class="nav-item">
                     <a href="{{ route('courses.index') }}" class="nav-link">Course</a>
                 </li>
-                @auth
+                {{-- @auth
                 @if(auth()->user()->isAdmin())
-                <li class="nav-item">
-                    <a href="{{ route('admin.courses.index') }}" class="nav-link">Admin</a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.courses.index') }}" class="nav-link">Admin</a>
+                    </li>
                 @endif
-                @endauth
+                @endauth --}}
             </ul>
 
             @auth
