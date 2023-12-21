@@ -12,6 +12,7 @@
         <link rel='icon' href='/LMS-logo-_Capstone-Project_.ico' type='image/x-icon' >
         <!-- Data Table -->
         <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css') }}">
 
         <!-- Theme style -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -159,6 +160,23 @@
                     swal({
                         title   : 'Confirmation of Create',
                         text    : 'Do you really want to add this data',
+                        icon    : 'warning',
+                        buttons : true,
+                        dangerMode : true,
+                    }).then((willUpdate) => {
+                        if (willUpdate) {
+                            // Jika user menekan "Ok", submit form
+                            $('form').submit();
+                        }
+                    });
+                }
+            </script>
+            <script>
+                function confirmUpdateProfile() {
+                    event.preventDefault();
+                    swal({
+                        title   : 'Confirmation of Change',
+                        text    : 'Do you really want to update your profile?',
                         icon    : 'warning',
                         buttons : true,
                         dangerMode : true,

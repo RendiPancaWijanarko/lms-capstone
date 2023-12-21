@@ -13,6 +13,7 @@ class CreateTechers2sTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('teacher');
         Schema::create('teacher', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
