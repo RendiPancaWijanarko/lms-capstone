@@ -107,8 +107,9 @@ class RegisterController extends Controller
             teacher::create([
                 'nama' => $data['name'],
                 'email' => $data['email'],
-                'no_telepon' => $data['phone'],
-                'kategori' => $cat,
+                'phone' => $data['phone'],
+                'category' => $cat,
+                'deskripsi' => "",
                 'id' => $userId,
             ]);
         }
