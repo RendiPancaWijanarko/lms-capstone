@@ -14,7 +14,7 @@
                     <img src="{{ Auth::user()->avatar }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="{{ route('detailTeacher') }}" class="d-block">{{ Auth::user()->name }}</a>
+                    <a href="{{ route('profile.show') }}" class="d-block">{{ Auth::user()->name }}</a>
                 </div>
             </div>
 

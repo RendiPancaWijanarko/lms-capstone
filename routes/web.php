@@ -35,6 +35,14 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     Route::get('/feedback/create', 'FeedbackController@create')->name('feedback.create');
     Route::post('/feedback', 'FeedbackController@store')->name('feedback.store');
 
+// SideBar
+    // 1. Profile
+    Route::get('/profile', 'ProfileController@show')->name('profile.show');
+    Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit')->middleware('auth');
+    Route::put('/profile/update', 'ProfileController@update')->name('profile.update')->middleware('auth');
+
+
+
 Route::get('/teacher', 'TeacherController@index')->name('detailTeacher');
 
 Route::get('/teacher/{teacher}/edit', 'TeacherController@edit')->name('editTeacher');
