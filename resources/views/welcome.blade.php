@@ -126,32 +126,10 @@
                     <label for="message">Message:</label>
                     <textarea name="message" rows="4" required></textarea>
 
-                    <button type="button" onclick="confirmSendMessage()">Send Message</button>
+                    <button type="button" onClick="confirmFeedback()">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
-
-    @push('scripts')
-    <script>
-        function confirmSendMessage() {
-            Swal.fire({
-                title: "Are you sure?",
-                text: "Do you want to send this message?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, send it!",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('feedbackForm').submit();
-                } else {
-                    Swal.fire("Message not sent.", "", "error");
-                }
-            });
-        }
-    </script>
-    @endpush
 
 @endsection
