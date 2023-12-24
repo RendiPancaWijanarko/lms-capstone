@@ -19,6 +19,11 @@ class StudentController extends Controller
     {
         return view('student.dashboard');
     }
+
+    public function class()
+    {
+        return view('student.class');
+    }
     
     public function showProfile()
     {

@@ -46,6 +46,7 @@
     Route::get('/student/profil', 'StudentController@showProfile')->name('profile.show');
     Route::get('/student/edit', 'StudentController@edit')->name('profile.edit');
     Route::put('/student/updateProfile', 'StudentController@updateProfile')->name('student.updateProfile');
+    Route::get('/student/class', 'StudentController@class')->name('profile.class');
     
 
     //schedule
