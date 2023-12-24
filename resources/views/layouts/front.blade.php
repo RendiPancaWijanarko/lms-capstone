@@ -92,7 +92,7 @@
         </div>
       </div>
 
-      <span class="footer-copy">&#169; 2023 <a href="https://rendipancawijanarko.github.io/FlyHigh/FlyHigh.html"><strong>FlyHigh Corp.</strong></a> All rights reserved.</span>
+      <span class="footer-copy">&#169; 2023 <a href="https://rendipancawijanarko.github.io/FlyHigh/FlyHigh.html" target="_blank"><strong>FlyHigh Corp.</strong></a> All rights reserved.</span>
     </footer>
 
     <a href="#" class="scroll-up" id="scroll-up">
