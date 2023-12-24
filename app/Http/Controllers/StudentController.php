@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class StudentController extends Controller
 {
@@ -19,7 +22,45 @@ class StudentController extends Controller
     
     public function showProfile()
     {
-        return view('student.profil');
+        $user = auth()->user();
+
+        // Data untuk ditampilkan di profil
+        $userLevel = $user->level? $user->level->count():0; 
+        $userRank = $user->rank ? $user->rank->count() : 0 ;
+        $certificateCount = $user->certificates ? $user->certificates->count() : 0;
+
+        // Kirim data ke tampilan Blade
+        return view('student.profile', compact('userLevel', 'userRank', 'certificateCount'));
+
+    
+    }
+    public function edit()
+    {
+        $user = Auth::user();
+        return view('student.edit', compact('user'));
+
+
+    }
+    
+
+    public function updateProfile(Request $request)
+    {
+        // Validasi input, contoh:
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . auth()->id(),
+            // Tambahkan validasi untuk field lain sesuai kebutuhan
+        ]);
+    
+        // Update data di database
+        auth()->user()->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            // Update field lain sesuai kebutuhan
+        ]);
+    
+        // Redirect dengan pesan sukses
+        return redirect()->route('profile.show')->with('success', 'Profil berhasil diperbarui!');
     }
     /**
      * Show the form for creating a new resource.
@@ -31,7 +72,7 @@ class StudentController extends Controller
         //
     }
 
-    /**
+    /** 
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -59,10 +100,7 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.

@@ -42,7 +42,7 @@
                                 <h6>Selamat belajar {{ Auth::user()->name }}, semoga harimu menyenangkan. <br>Jangan lupa
                                     kerjakan tugas ya jika belum!</h6>
 
-                                <a href="{{ route('student.profil') }}" class="btn btn-sm btn-outline-success mt-3">Lihat
+                                <a href="{{ route('profile.show') }}" class="btn btn-sm btn-outline-success mt-3">Lihat
                                     Profil</a>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                         <!-- Add your schedule content here -->
                     </div>
                     <div class="card-footer mb-0 bg-success">
-                        <a href="" class="text-decoration-none">
+                        <a href="{{ route('detailSchedule') }}" class="text-decoration-none">
                             Akses Jadwal disini
                             <span class="ml-2 d-inline-block">
                                 <i class="fas fa-arrow-right"></i>
