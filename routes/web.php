@@ -42,11 +42,13 @@
 
 
     // student
-    Route::get('/student', 'StudentController@index');
+    Route::get('/student', 'StudentController@index')->name('student.dashboard');
     Route::get('/student/profil', 'StudentController@showProfile')->name('profile.show');
     Route::get('/student/edit', 'StudentController@edit')->name('profile.edit');
     Route::put('/student/updateProfile', 'StudentController@updateProfile')->name('student.updateProfile');
     Route::get('/student/class', 'StudentController@class')->name('profile.class');
+    Route::get('/student/attendance', 'StudentController@attendance')->name('student.attendance');
+    Route::get('/student/grade', 'StudentController@grade')->name('student.grade');
     
 
     //schedule

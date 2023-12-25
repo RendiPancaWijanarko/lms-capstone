@@ -39,6 +39,23 @@ class StudentController extends Controller
 
     
     }
+
+    public function attendance()
+    {
+        $attendance = [
+            ['student_class' => ['nama_kelas' => 'HTML'], 'date' => '2023-01-01', 'keterangan' => 'Hadir'],
+            ['student_class' => ['nama_kelas' => 'CSS'], 'date' => '2023-01-02', 'keterangan' => 'Izin'],
+            ['student_class' => ['nama_kelas' => 'JavaScript'], 'date' => '2023-01-03', 'keterangan' => 'Alfa'],
+        ];
+    
+        return view('student.attendance', compact('attendance'));
+    }
+
+    public function grade()
+    {
+        return view('student.grade');
+    }
+
     public function edit()
     {
         $user = Auth::user();
@@ -46,7 +63,6 @@ class StudentController extends Controller
 
 
     }
-    
 
     public function updateProfile(Request $request)
     {
