@@ -54,9 +54,11 @@
 <div class="content">
     <div class="container-fluid">
     <div class="card">
-			<div class="card-header text-right">
-				<a href="{{ route('createSchedule') }}" class="btn btn-primary" role="button">Add Schedule</a>
-			</div>
+        @can('add_courses')
+        <div class="card-header text-right">
+            <a href="{{ route('createSchedule') }}" class="btn btn-primary" role="button">Add Schedule</a>
+        </div>
+        @endcan
         <div class="card-body">
             <table class="table table-hover table-bordered mb-0" id="data-table">
                 <thead>
@@ -66,7 +68,9 @@
                         <th>Date</th>
                         <th>Schedule Description</th>
                         <th>Meet Link</th>
+                        @can('add_courses')
                         <th>Action</th>
+                        @endcan
                     </tr>
                 </thead>
                 <tbody>
@@ -77,10 +81,12 @@
                         <td> {{ $schedule->date_schedule }}</td>
                         <td> {{ $schedule->description }} </td>
                         <td><a href="{{ $schedule->meet_link }}" target="_blank">Join Class</a></td>
+                        @can('add_courses')
                         <td>
                             <a href="{{ route('editSchedule', ['schedule'=> $schedule->id]) }}" class="btn btn-warning btn-sm" role="button">Update</a>
                             <a onclick="confirmDelete(this)" data-url="{{ route('deleteSchedule', ['schedule'=> $schedule->id]) }}" class="btn btn-danger btn-sm" role="button">Delete</a>
                         </td>
+                        @endcan
                     </tr>
                     @endforeach
                 </tbody>

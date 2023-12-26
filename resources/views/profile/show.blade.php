@@ -2,6 +2,14 @@
 
 @section('content')
     <div class="container">
+        <div>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('student.dashboard') }}">Profile</a></li>
+                <li class="breadcrumb-item active">Edit</li>
+            </ol>
+        </div>
+
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">

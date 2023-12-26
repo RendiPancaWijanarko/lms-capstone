@@ -2,6 +2,13 @@
 
 @section('content')
 <div class="container">
+    <div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+            <li class="breadcrumb-item active">Courses</li>
+        </ol>
+    </div>
+
     <div class="row">
         @foreach($courses as $course)
             <div class="col-md-4">
