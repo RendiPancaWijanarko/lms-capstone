@@ -58,19 +58,12 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::get('/student/profil', 'StudentController@showProfile')->name('profile.show');
     Route::get('/student/edit', 'StudentController@edit')->name('profile.edit');
     Route::put('/student/updateProfile', 'StudentController@updateProfile')->name('student.updateProfile');
-<<<<<<< HEAD
     Route::get('/student/course', 'StudentController@course')->name('student.course');
     Route::get('/student/schedule', 'StudentController@showSchedule')->name('student.schedule');
-    
-    
-
-    
-=======
-    Route::get('/student/class', 'StudentController@class')->name('profile.class');
     Route::get('/student/attendance', 'StudentController@attendance')->name('student.attendance');
     Route::get('/student/grade', 'StudentController@grade')->name('student.grade');
 
->>>>>>> 520a068730f2e6a182b2a3a4596e85f862e76491
+
 
     //schedule
     Route::get('/schedule', 'SchedulesController@index')->name('detailSchedule');
