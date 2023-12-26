@@ -5,6 +5,7 @@
 @endsection
 
 @section('addJavascript')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
@@ -72,7 +73,7 @@
                     @foreach ($schedules as $schedule)
                     <tr>
                         <td> {{ $loop->index + 1 }}</td>
-                        <td> {{ $schedule->class_name }}</td>
+                        <td>{{ $schedule->kelas ? $schedule->kelas->name  :'-'}}</td>
                         <td> {{ $schedule->date_schedule }}</td>
                         <td> {{ $schedule->description }} </td>
                         <td><a href="{{ $schedule->meet_link }}" target="_blank">Join Class</a></td>

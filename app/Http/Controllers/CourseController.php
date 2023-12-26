@@ -17,9 +17,6 @@ use LMS\Modules\Courses\Usecases\Contracts\{ListCourseUsecaseInterface,
     SubscribeCourseUsecaseInterface
 };
 
-
-
-
 class CourseController extends Controller
 {
 

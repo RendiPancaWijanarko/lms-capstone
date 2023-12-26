@@ -18,13 +18,13 @@
                 </p>
                 <div class="home-btns">
                     <a href="{{ route('courses.index') }}" class="button btn-gray btn-small"> My Course </a>
-                    <a href="#feedback-form" class="button button-home">Reach Us</a>
+                    <a href="#our-goals" class="button button-home">Our Goals</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="story section container">
+    <section id="our-goals" class="story section container">
         <div class="story-container grid">
             <div class="story-data">
                 <h2 class="section-title story-section-title">Our Goals</h2>

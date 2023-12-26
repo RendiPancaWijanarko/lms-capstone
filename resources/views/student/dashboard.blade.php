@@ -3,21 +3,21 @@
 @section('content')
     <div class="container">
         <div class="row">
-
             {{-- Main Content --}}
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        {{ __('Welcome') }} {{ auth()->user()->name }}
+                        {{ __('Welcome, ') }} {{ auth()->user()->name }}
                     </div>
                     {{-- Isi Profil --}}
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-4 text-center text-sm-left mb-3">
-                                <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="img-fluid border border-primary"
+                            <div class="col-sm-3 text-sm-center mb-2">
+                                <img src="{{ Auth::user()->avatar }}" alt="Avatar"
+                                    class="img-fluid border border-success elevation-2"
                                     style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto;">
                             </div>
-                            <div class="col-sm-8">
+                            <div class="col-sm-9">
                                 @php
                                     // Set the timezone to Jakarta (WIB)
                                     date_default_timezone_set('Asia/Jakarta');
@@ -38,11 +38,11 @@
                                 @endphp
 
                                 <h3 class="text-success">{{ $pesan }}, <span
-                                        id="username">{{ Auth::user()->name }}</span>!</h3>
-                                <h6>Selamat belajar {{ Auth::user()->name }}, semoga harimu menyenangkan. <br>Jangan lupa
-                                    kerjakan tugas ya jika belum!</h6>
+                                        id="username">{{ Auth::user()->name }}</span></h3>
+                                <h6>Selamat belajar, semoga harimu menyenangkan. <br>Jangan lupa
+                                    kerjakan tugas ya jika belum !</h6>
 
-                                <a href="{{ route('profile.show') }}" class="btn btn-sm btn-outline-success mt-3">Lihat
+                                <a href="{{ route('profile.show') }}" class="btn btn-sm btn-outline-success mt-4">Lihat
                                     Profil</a>
                             </div>
                         </div>
@@ -60,7 +60,6 @@
                     <div class="card-body">
                         <h1><i class="fas fa-calendar-alt" style="color: #28a745;"></i></h1>
                         <h5> Schedule </h5>
-                        <!-- Add your schedule content here -->
                     </div>
                     <div class="card-footer mb-0 bg-success">
                         <a href="{{ route('student.schedule') }}" class="text-decoration-none">
@@ -79,7 +78,6 @@
                     <div class="card-body">
                         <h1><i class="fas fa-book" style="color: #28a745;"></i></h1>
                         <h5> Kelas </h5>
-                        <!-- Add your schedule content here -->
                     </div>
                     <div class="card-footer mb-0 bg-success">
                         <a href="{{ route('student.course') }}" class="text-decoration-none">
@@ -98,10 +96,9 @@
                     <div class="card-body">
                         <h1><i class="fas fa-graduation-cap" style="color: #28a745;"></i></h1>
                         <h5> Nilai </h5>
-                        <!-- Add your schedule content here -->
                     </div>
                     <div class="card-footer mb-0 bg-success">
-                        <a href="" class="text-decoration-none">
+                        <a href="{{ route('student.grade') }}" class="text-decoration-none">
                             Akses Nilai disini
                             <span class="ml-2 d-inline-block">
                                 <i class="fas fa-arrow-right"></i>
@@ -117,10 +114,9 @@
                     <div class="card-body">
                         <h1><i class="fas fa-check-circle" style="color: #28a745;"></i></h1>
                         <h5> Absensi </h5>
-                        <!-- Add your schedule content here -->
                     </div>
                     <div class="card-footer mb-0 bg-success">
-                        <a href="" class="text-decoration-none">
+                        <a href="{{ route('student.attendance') }}" class="text-decoration-none">
                             Akses Absensi disini
                             <span class="ml-2 d-inline-block">
                                 <i class="fas fa-arrow-right"></i>

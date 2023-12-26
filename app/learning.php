@@ -5,15 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class schedules extends Model
+class learning extends Model
 {
-    protected $table = "schedule";
+    protected $table = "learning";
     protected $fillable = [
         'id_kelas',
-        'date_schedule',
+        'learning_material',
         'description',
-        'meet_link',
+        'gdrive_link',
     ];
+
     public function kelas()
     {
         return $this->belongsTo('App\Kelas', 'id_kelas');
