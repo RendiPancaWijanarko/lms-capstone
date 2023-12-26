@@ -30,6 +30,26 @@
                             </p>
                         </a>
                     </li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="{{ route('detailKelas') }}" class="nav-link {{ is_active('kelas') }}">
+                            <i class="nav-icon fas fa-chalkboard"></i>
+                             <p>
+                                 {{ __('Class Name') }}
+                            </p>
+                         </a>
+                    </li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="{{ route('detailLearning') }}" class="nav-link {{ is_active('learning') }}">
+                            <i class="nav-icon fas fa-book"></i>
+                             <p>
+                                 {{ __('Learning') }}
+                            </p>
+                         </a>
+                    </li>
+
+
                     <li class="nav-item has-treeview">
                         <a href="{{ route('detailSchedule') }}" class="nav-link {{ is_active('schedule') }}">
                             <i class="nav-icon far fa-clock"></i>
@@ -38,6 +58,14 @@
                             </p>
                          </a>
                     </li>
+                    <li class="nav-item has-treeview">
+    <a href="" class="nav-link {{ is_active('attendances') }}">
+        <i class="nav-icon fas fa-users"></i>
+        <p>
+            {{ __('Attendances') }}
+        </p>
+    </a>
+</li>
 
                     <li class="nav-item">
                         <a href="{{ route('stream') }}" class="nav-link  {{ is_active('stream') }}">

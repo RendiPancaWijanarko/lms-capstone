@@ -28,9 +28,14 @@
                 <form action="{{ route('storeSchedule') }}" method="post">
                     @csrf
                     <div class="form-group">
-                        <label for="class_name">Class Name</label>
-                        <input type="text" name="class_name" id="class_name" class="form-control" required="required" placeholder="Enter class name">
-                    </div>
+						<label for="class_name">Class Name</label>
+						<select class="form-control" name="id_kelas" id="id_kelas" required="required">
+                        @foreach ($kelass as $kelas)
+							<option value="{{ $kelas->id }}">{{ $kelas->name }}</option>
+							@endforeach
+
+						</select>
+					</div>
                     <div class="form-group">
                         <label for="date_schedule">Date</label>
                         <input type="date" name="date_schedule" id="date_schedule" class="form-control" required="required">

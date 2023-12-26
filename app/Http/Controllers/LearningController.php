@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Schedule;
+use App\learning;
 use Illuminate\Http\Request;
 
-class SchedulesController extends Controller
+class LearningController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,8 @@ class SchedulesController extends Controller
      */
     public function index()
     {
-        $schedules = Schedule::all();
-        return view('schedule.index',[
-            'schedules' => $schedules
-        ]);
+        $learnings = Learning::all(); // Replace this with your actual query to retrieve learning data
+        return view('learning.index', compact('learnings'));
     }
 
     /**
@@ -28,7 +26,7 @@ class SchedulesController extends Controller
     public function create()
     {
         $kelass = \App\Kelas::all();
-        return view('schedule.create',[
+        return view('learning.create',[
             'kelass' => $kelass
         ]);
     }
@@ -43,22 +41,22 @@ class SchedulesController extends Controller
     {
         $validateData = validator($request->all(),[
             'id_kelas'=> 'required|integer',
-            'date_schedule' => 'required|date',
+            'learning_material' => 'required|string',
             'description' => 'required|string',
-            'meet_link' => 'required|string',
+            'gdrive_link' => 'required|string',
         ])->validate();
-        $schedule = new Schedule($validateData);
-        $schedule->save();
-        return redirect(route('detailSchedule'))->with('success', 'Data Berhasil Di simpan');;
+        $learning = new Learning($validateData);
+        $learning->save();
+        return redirect(route('detailLearning'))->with('success', 'Data Berhasil Di simpan');;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Schedule  $schedule
+     * @param  \App\learning  $learning
      * @return \Illuminate\Http\Response
      */
-    public function show(Schedule $schedule)
+    public function show(learning $learning)
     {
         //
     }
@@ -66,14 +64,14 @@ class SchedulesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Schedule  $schedule
+     * @param  \App\learning  $learning
      * @return \Illuminate\Http\Response
      */
-    public function edit(Schedule $schedule)
+    public function edit(learning $learning)
     {
         $kelass = \App\Kelas::all();
-        return view('schedule.edit',[
-            'schedule' => $schedule,
+        return view('learning.edit',[
+            'learning' => $learning,
             'kelass' => $kelass
         ]);
     }
@@ -82,37 +80,36 @@ class SchedulesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Schedule  $schedule
+     * @param  \App\learning  $learning
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Schedule $schedule)
+    public function update(Request $request, learning $learning)
     {
         $validateData = validator($request->all(), [
             'id_kelas'=> 'required|integer',
-            'date_schedule' => 'required|date',
+            'learning_material' => 'required|string',
             'description' => 'required|string',
-            'meet_link' => 'required|string',
+            'gdrive_link' => 'required|string',
         ])->validate();
         
-        $schedule->id_kelas = $validateData['id_kelas'];
-        $schedule->date_schedule = $validateData['date_schedule'];
-        $schedule->description = $validateData['description'];
-        $schedule->meet_link = $validateData['meet_link'];
-        $schedule->save();
+        $learning->id_kelas = $validateData['id_kelas'];
+        $learning->learning_material = $validateData['learning_material'];
+        $learning->description = $validateData['description'];
+        $learning->gdrive_link = $validateData['gdrive_link'];
+        $learning->save();
         
-        return redirect(route('detailSchedule'))->with('success', 'Data Berhasil Diupdate');
-        
+        return redirect(route('detailLearning'))->with('success', 'Data Berhasil Diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Schedule  $schedule
+     * @param  \App\learning  $learning
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Schedule $schedule)
+    public function destroy(learning $learning)
     {
-        $schedule->delete();
-        return redirect(route('detailSchedule'))->with('success', 'Data Berhasil Di hapus');;
+        $learning->delete();
+        return redirect(route('detailLearning'))->with('success', 'Data Berhasil Di hapus');;
     }
 }
