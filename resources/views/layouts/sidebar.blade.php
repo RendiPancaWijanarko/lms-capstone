@@ -135,7 +135,7 @@
                     @can('view_courses') <!-- student sidebar -->
                         <li class="nav-header">Student</li>
                         <li class="nav-item">
-                            <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
+                            <a href="{{ route('detailSchedule') }}" class="nav-link {{ is_active('schedule') }}">
                                 <i class="nav-icon fas fa-calendar-alt"></i>
                                 <p>
                                     {{ __('Schedule') }}
@@ -143,7 +143,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
+                            <a href="{{ route('courses.index') }}" class="nav-link {{ is_active('courses.index') }}">
                                 <i class="nav-icon fas fa-chalkboard"></i>
                                 <p>
                                     {{ __('Course') }}
@@ -151,7 +151,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
+                            <a href="{{ route('student.grade') }}" class="nav-link {{ is_active('student.grade') }}">
                                 <i class="nav-icon fas fa-graduation-cap"></i>
                                 <p>
                                     {{ __('Grade') }}
@@ -159,7 +159,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
+                            <a href="{{ route('student.attendance') }}" class="nav-link {{ is_active('attendace') }}">
                                 <i class="nav-icon fas fa-clipboard-check"></i>
                                 <p>
                                     {{ __('Attendance') }}
@@ -167,8 +167,6 @@
                             </a>
                         </li>
                     @endcan
-
-
 
                     <li class="nav-header"></li>
 

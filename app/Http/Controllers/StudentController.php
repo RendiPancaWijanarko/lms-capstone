@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Student;
+use App\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,9 +21,9 @@ class StudentController extends Controller
         return view('student.dashboard');
     }
 
-    public function class()
+    public function course()
     {
-        return view('student.class');
+        return view('student.course');
     }
     
     public function showProfile()
@@ -65,29 +66,37 @@ class StudentController extends Controller
     }
 
     public function updateProfile(Request $request)
-    {
-        // Validasi input, contoh:
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . auth()->id(),
-            // Tambahkan validasi untuk field lain sesuai kebutuhan
-        ]);
-    
-        // Update data di database
-        auth()->user()->update([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            // Update field lain sesuai kebutuhan
-        ]);
-    
-        // Redirect dengan pesan sukses
-        return redirect()->route('profile.show')->with('success', 'Profil berhasil diperbarui!');
-    }
+{
+    // Validasi input disini jika diperlukan
+
+    // Simpan perubahan pada model pengguna
+    auth()->user()->update([
+        'name' => $request->input('name'),
+        'phone_number' => $request->input('phone_number'),
+        'address' => $request->input('address'),
+        // Tambahkan field lain sesuai kebutuhan
+    ]);
+
+    // Tambahkan pesan flash
+    session()->flash('success', 'Profil berhasil diperbarui.');
+
+    // Arahkan kembali ke halaman profil
+    return redirect()->route('profile.show');
+}
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function showSchedule()
+    {
+    // Ambil data jadwal pelajaran untuk siswa dari database
+    $schedules = Schedule::all(); // Sesuaikan dengan model dan relasi Anda
+
+    // Kirim data ke tampilan Blade
+    return view('student.schedule', compact('schedules'));
+    }
+    
     public function create()
     {
         //
