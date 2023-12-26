@@ -24,7 +24,7 @@
     <div class="dropdown" id="dropdown">
       <i class="bx bx-x dropdown-close" id="dropdown-close"></i>
 
-      <a href="{{ route('courses.index') }}"><h2 class="dropdown-title-center">My Course</h2></a>
+      <a href="{{ route('home') }}"><h2 class="dropdown-title-center">Dashboard</h2></a>
       <a href="#" onclick="getElementById('logout').submit()"><h2 class="dropdown-title-center">Logout</h2></a>
       <form id="logout" action="{{ route('logout') }}" method="post">
           @csrf
