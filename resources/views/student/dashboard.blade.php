@@ -63,7 +63,7 @@
                         <!-- Add your schedule content here -->
                     </div>
                     <div class="card-footer mb-0 bg-success">
-                        <a href="{{ route('detailSchedule') }}" class="text-decoration-none">
+                        <a href="{{ route('student.schedule') }}" class="text-decoration-none">
                             Akses Jadwal disini
                             <span class="ml-2 d-inline-block">
                                 <i class="fas fa-arrow-right"></i>
@@ -82,7 +82,7 @@
                         <!-- Add your schedule content here -->
                     </div>
                     <div class="card-footer mb-0 bg-success">
-                        <a href="" class="text-decoration-none">
+                        <a href="{{ route('student.course') }}" class="text-decoration-none">
                             Akses Kelas disini
                             <span class="ml-2 d-inline-block">
                                 <i class="fas fa-arrow-right"></i>

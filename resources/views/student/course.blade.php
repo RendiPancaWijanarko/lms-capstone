@@ -7,7 +7,7 @@
                 {{-- header list kelas --}}
                 <div class="card-header">
                     <div class="card-title mb-0 me-1">
-                        <h5 class="mb-1">My Class</h5>
+                        <h5 class="mb-1">Daftar Kelas</h5>
                     </div>
                 </div>
 
@@ -22,7 +22,7 @@
                                 </div>
 
                                 <div class="card-body p-3 pt-2">
-                                    <a href="" class="h5">Basics of Angular</a>
+                                    <a href="" class="h5">English</a>
                                     <p class="d-flex align-items-center mt-2"> 30 minutes </p>
 
                                     <div class="progress rounded-pill mb-4" style="height: 8px">
@@ -43,7 +43,7 @@
                                 </div>
 
                                 <div class="card-body p-3 pt-2">
-                                    <a href="" class="h5">Basics of Angular</a>
+                                    <a href="" class="h5">Computer Science</a>
                                     <p class="d-flex align-items-center mt-2"> 30 minutes </p>
 
                                     <div class="progress rounded-pill mb-4" style="height: 8px">
@@ -64,7 +64,7 @@
                                 </div>
 
                                 <div class="card-body p-3 pt-2">
-                                    <a href="" class="h5">Basics of Angular</a>
+                                    <a href="" class="h5">Art</a>
                                     <p class="d-flex align-items-center mt-2"> 30 minutes </p>
 
                                     <div class="progress rounded-pill mb-4" style="height: 8px">
