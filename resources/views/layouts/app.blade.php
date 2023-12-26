@@ -19,12 +19,15 @@
     <link rel='icon' href='LMS-logo-_Capstone-Project_.ico' type='image/x-icon'/ >
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/style.css') }}" />
+
     @include('includes.analytics')
 </head>
 <body>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.3&appId=358872005021678"></script>
     <div id="app">
+        {{--
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -77,6 +80,9 @@
                 </div>
             </div>
         </nav>
+        --}}
+
+        @include('layouts.navbar');
 
         <main class="py-4">
             @yield('content')

@@ -47,7 +47,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -134,22 +134,34 @@
                             <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
 
                             <div class="col-md-6 my-auto">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="category" id="inlineRadio1" value="english" onchange="otherOff();" {{ old('category') == 'english' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="inlineRadio1">English</label>
+                                <div class="row align-items-center">
+                                    <div class="col-md-3 col-4">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="category" id="inlineRadio1" value="english" onchange="otherOff();" {{ old('category') == 'english' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="inlineRadio1">English</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-4">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="category" id="inlineRadio2" value="computerscience" onchange="otherOff();" {{ old('category') == 'computerscience' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="inlineRadio2">Computer Science</label>
+                                        </div>        
+                                    </div>
+                                    <div class="col-md-3 col-4">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="category" id="inlineRadio3" value="art" onchange="otherOff();" {{ old('category') == 'art' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="inlineRadio3">Art</label>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="category" id="inlineRadio2" value="computerscience" onchange="otherOff();" {{ old('category') == 'computerscience' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="inlineRadio2">Computer Science</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="category" id="inlineRadio3" value="art" onchange="otherOff();" {{ old('category') == 'art' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="inlineRadio3">Art</label>
-                                </div>
-                                <div class="form-check form-check-inline mt-1">
-                                    <input class="form-check-input" type="radio" name="category" id="inlineRadio4" value="other" onchange="otherOn();" {{ old('category') == 'other' ? 'checked' : '' }}>
-                                    <label id="other_label" class="form-check-label" for="inlineRadio4">Other</label>
-                                    <input id="other" name="other" type="text" placeholder="Lainnya" style="display:none" value="{{ old('other') }}" autocomplete='other'>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-check form-check-inline mt-1">
+                                            <input class="form-check-input" type="radio" name="category" id="inlineRadio4" value="other" onchange="otherOn();" {{ old('category') == 'other' ? 'checked' : '' }}>
+                                            <label id="other_label" class="form-check-label" for="inlineRadio4">Other</label>
+                                            <input id="other" name="other" type="text" placeholder="Lainnya" style="display:none; width:200px" value="{{ old('other') }}" autocomplete='other'>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 @error('category')
@@ -201,7 +213,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="button btn-small">
                                     {{ __('Register') }}
                                 </button>
                             </div>
