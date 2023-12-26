@@ -31,42 +31,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-item has-treeview">
-                        <a href="{{ route('detailKelas') }}" class="nav-link {{ is_active('kelas') }}">
-                            <i class="nav-icon fas fa-chalkboard"></i>
-                             <p>
-                                 {{ __('Class Name') }}
-                            </p>
-                         </a>
-                    </li>
-
-                    <li class="nav-item has-treeview">
-                        <a href="{{ route('detailLearning') }}" class="nav-link {{ is_active('learning') }}">
-                            <i class="nav-icon fas fa-book"></i>
-                             <p>
-                                 {{ __('Learning') }}
-                            </p>
-                         </a>
-                    </li>
-
-
-                    <li class="nav-item has-treeview">
-                        <a href="{{ route('detailSchedule') }}" class="nav-link {{ is_active('schedule') }}">
-                            <i class="nav-icon far fa-clock"></i>
-                             <p>
-                                 {{ __('Schedule') }}
-                            </p>
-                         </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-    <a href="" class="nav-link {{ is_active('attendances') }}">
-        <i class="nav-icon fas fa-users"></i>
-        <p>
-            {{ __('Attendances') }}
-        </p>
-    </a>
-</li>
-
                     <li class="nav-item">
                         <a href="{{ route('stream') }}" class="nav-link  {{ is_active('stream') }}">
                             <i class="nav-icon fas fa-play"></i>
@@ -107,26 +71,45 @@
                     @can('add_courses') <!-- teacher sidebar -->
                         <li class="nav-header">Teacher</li>
                         <li class="nav-item">
-                            <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
+                            <a href="{{ route('courses.index') }}" class="nav-link {{ is_active('courses.index') }}">
                                 <i class="nav-icon fas fa-chalkboard-teacher"></i>
                                 <p>
                                     {{ __('Course') }}
                                 </p>
                             </a>
                         </li>
+                        
                         <li class="nav-item">
-                            <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
-                                <i class="nav-icon fas fa-book-open"></i>
-                                <p>
-                                    {{ __('Learning') }}
+                            <a href="{{ route('detailKelas') }}" class="nav-link {{ is_active('kelas') }}">
+                                <i class="nav-icon fas fa-chalkboard"></i>
+                                 <p>
+                                     {{ __('Class Name') }}
                                 </p>
-                            </a>
+                             </a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a href="{{ route('detailLearning') }}" class="nav-link {{ is_active('learning') }}">
+                                <i class="nav-icon fas fa-book-open"></i>
+                                 <p>
+                                     {{ __('Learning') }}
+                                </p>
+                             </a>
+                        </li>
+    
+                        <li class="nav-item ">
+                            <a href="{{ route('detailSchedule') }}" class="nav-link {{ is_active('schedule') }}">
+                                <i class="nav-icon fas fa-calendar-alt"></i>
+                                 <p>
+                                     {{ __('Schedule') }}
+                                </p>
+                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
-                                <i class="nav-icon fas fa-calendar-alt"></i>
+                            <a href="" class="nav-link {{ is_active('attendances') }}">
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
-                                    {{ __('Schedule') }}
+                                    {{ __('Attendances') }}
                                 </p>
                             </a>
                         </li>
@@ -143,7 +126,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('courses.index') }}" class="nav-link {{ is_active('courses.index') }}">
+                            <a href="{{ route('viewcourses.index') }}" class="nav-link {{ is_active('viewcourses.index') }}">
                                 <i class="nav-icon fas fa-chalkboard"></i>
                                 <p>
                                     {{ __('Course') }}
