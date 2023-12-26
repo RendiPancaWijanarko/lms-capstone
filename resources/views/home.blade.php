@@ -80,7 +80,7 @@
                         <h5> Courses </h5>
                     </div>
                     <div class="card-footer mb-0 bg-success">
-                        <a href="{{ route('courses.index') }}" class="text-decoration-none">
+                        <a href="{{ route('viewcourses.index') }}" class="text-decoration-none">
                             View Courses Here
                             <span class="ml-2 d-inline-block">
                                 <i class="fas fa-arrow-right"></i>
@@ -128,52 +128,5 @@
 
         </div>
     @endcan
-
-    <div class="row">
-        @foreach($courses as $course)
-            <div class="col-md-4">
-                <div class="card card-widget widget-user">
-                    <!-- Add the bg color to the header using any of the bg-* classes -->
-                    <div class="widget-user-header bg-info-active">
-                        <h3 class="widget-user-username">{{ $course->name }}</h3>
-                        <h5 class="widget-user-desc">{{ $course->teacher->name }}</h5>
-                    </div>
-                    <div class="widget-user-image">
-                        <img class="img-circle elevation-2" src="{{ $course->teacher->avatar }}" alt="User Avatar">
-                    </div>
-
-                    <div class="card-footer">
-                        <div class="row">
-                            <div class="col-sm-4 border-right">
-                                <div class="description-block">
-                                    <h5 class="description-header">{{ $course->students()->count() }}</h5>
-                                    <span class="description-text">STUDENTS</span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-4 border-right">
-                                <div class="description-block">
-                                    <a href="{{route('courses.show', $course->id)}}" class="btn"><i class="icon far fa-2x fa-eye text-green"></i></a>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-4">
-                                <div class="description-block">
-                                    <h5 class="description-header">{{ $course->lessons->count() }}</h5>
-                                    <span class="description-text">LESSONS</span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
-                    </div>
-                </div>
-                <!-- /.col -->
-            </div>
-        @endforeach
-    </div>
 </div>
 @endsection

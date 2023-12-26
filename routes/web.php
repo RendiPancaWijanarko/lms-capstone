@@ -36,12 +36,12 @@ Route::group( ['middleware' => ['auth']], function() {
     // ADMIN
     Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/users', 'UserController@index')->name('users.index');
-
-        // Rute untuk halaman index kursus
-        // Route::get('/courses', 'Admin\CourseController@index')->name('courses.index');
     });
 
 
+    // MULTI ROLE
+    // 1. View Courses
+    Route::get('/view/courses', 'ViewCourseController@index')->name('viewcourses.index');
 
 // Welcome Page
     // 1. Form Feedback
