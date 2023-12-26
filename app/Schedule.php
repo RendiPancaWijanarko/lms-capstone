@@ -9,9 +9,13 @@ class Schedule extends Model
 {
     protected $table = "schedule";
     protected $fillable = [
-        'class_name',
+        'id_kelas',
         'date_schedule',
         'description',
         'meet_link',
     ];
+    public function kelas()
+    {
+        return $this->belongsTo('App\Kelas', 'id_kelas');
+    }
 }
