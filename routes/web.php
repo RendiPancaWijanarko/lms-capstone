@@ -1,5 +1,7 @@
     <?php
 
+    use App\Http\Controllers\Admin\UserController;
+
     /*
     |--------------------------------------------------------------------------
     | Web Routes
@@ -30,13 +32,22 @@
         \UniSharp\LaravelFilemanager\Lfm::routes();
     });
 
+    // ADMIN
+    Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+        Route::get('/users', 'UserController@index')->name('users.index');
+
+        // Rute untuk halaman index kursus
+        // Route::get('/courses', 'Admin\CourseController@index')->name('courses.index');
+    });
+
+
+
     // Welcome Page
         // 1. Form Feedback
         Route::get('/feedback/create', 'FeedbackController@create')->name('feedback.create');
         Route::post('/feedback', 'FeedbackController@store')->name('feedback.store');
 
     Route::get('/teacher', 'TeacherController@index')->name('detailTeacher');
-
     Route::get('/teacher/{teacher}/edit', 'TeacherController@edit')->name('editTeacher');
     Route::post('/teacher/{teacher}/edit', 'TeacherController@update')->name('updateTeacher');
 
@@ -49,7 +60,7 @@
     Route::get('/student/class', 'StudentController@class')->name('profile.class');
     Route::get('/student/attendance', 'StudentController@attendance')->name('student.attendance');
     Route::get('/student/grade', 'StudentController@grade')->name('student.grade');
-    
+
 
     //schedule
     Route::get('/schedule', 'SchedulesController@index')->name('detailSchedule');

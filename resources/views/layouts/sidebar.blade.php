@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed">
+<aside class="main-sidebar sidebar-dark-primary elevation-4 position-absolute">
         <!-- Brand Logo -->
         <a href="{{ route('welcome') }}" class="brand-link">
             <span class="brand-text font-weight-light">{{  Config::get('settings.name') }} <span class="right badge badge-danger">Welcome</span></span>
@@ -48,24 +48,99 @@
                         </a>
                     </li>
                     @can('view_admin')
-                    <li class="nav-header">@lang('menus.administration')</li>
-                    <li class="nav-item">
-                        <a href="{{ route('roles.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-lock"></i>
-                            <p>
-                                @lang('roles.roles')
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('courses.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                @lang('course/fields.courses')
-                            </p>
-                        </a>
-                    </li>
+                        <li class="nav-header">@lang('menus.administration')</li>
+                        <li class="nav-item">
+                            <a href="{{ route('roles.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-lock"></i>
+                                <p>
+                                    @lang('roles.roles')
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('courses.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    @lang('course/fields.courses')
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('users.index') }}" class="nav-link {{ is_active('users.index') }}">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    {{ __('Users') }}
+                                </p>
+                            </a>
+                        </li>
                     @endcan
+
+                    @can('add_courses') <!-- teacher sidebar -->
+                        <li class="nav-header">Teacher</li>
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
+                                <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                                <p>
+                                    {{ __('Course') }}
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
+                                <i class="nav-icon fas fa-book-open"></i>
+                                <p>
+                                    {{ __('Learning') }}
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
+                                <i class="nav-icon fas fa-calendar-alt"></i>
+                                <p>
+                                    {{ __('Schedule') }}
+                                </p>
+                            </a>
+                        </li>
+                    @endcan
+
+                    @can('view_courses') <!-- student sidebar -->
+                        <li class="nav-header">Student</li>
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
+                                <i class="nav-icon fas fa-calendar-alt"></i>
+                                <p>
+                                    {{ __('Schedule') }}
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
+                                <i class="nav-icon fas fa-chalkboard"></i>
+                                <p>
+                                    {{ __('Course') }}
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
+                                <i class="nav-icon fas fa-graduation-cap"></i>
+                                <p>
+                                    {{ __('Grade') }}
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
+                                <i class="nav-icon fas fa-clipboard-check"></i>
+                                <p>
+                                    {{ __('Attendance') }}
+                                </p>
+                            </a>
+                        </li>
+                    @endcan
+
+
+
                     <li class="nav-header"></li>
 
                     <li class="nav-item">

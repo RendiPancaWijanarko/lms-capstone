@@ -20,26 +20,26 @@ class ProfileController extends Controller
     }
 
     public function update(Request $request)
-{
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(),
-        'username' => 'required|string|max:255|unique:users,username,' . Auth::id(),
-        'password' => 'nullable|string|min:8|confirmed',
-    ]);
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(),
+            'username' => 'required|string|max:255|unique:users,username,' . Auth::id(),
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
 
-    $user = Auth::user();
-    $user->name = $request->name;
-    $user->email = $request->email;
-    $user->username = $request->username;
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->username = $request->username;
 
-    // Perbarui password jika password baru diberikan
-    if ($request->filled('password')) {
-        $user->password = Hash::make($request->password);
+        // Perbarui password jika password baru diberikan
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->route('profile.show')->with('success', 'Profile updated successfully.');
     }
-
-    $user->save();
-
-    return redirect()->route('profile.show')->with('success', 'Profile updated successfully.');
-}
 }

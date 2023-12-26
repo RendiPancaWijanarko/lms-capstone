@@ -3,7 +3,7 @@
     <div class="container">
         <div>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('student.dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
                 <li class="breadcrumb-item active">Roles</li>
             </ol>
         </div>

@@ -12,13 +12,6 @@
 
 @section('content')
 <div class="col-12">
-    <div>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active">Courses</li>
-        </ol>
-    </div>
-
     <div class="card">
         <div class="card-header">
             <div class="d-flex align-items-center">
