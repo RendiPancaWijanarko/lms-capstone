@@ -115,4 +115,5 @@ class SchedulesController extends Controller
         $schedule->delete();
         return redirect(route('detailSchedule'))->with('success', 'Data Berhasil Di hapus');;
     }
+    
 }
