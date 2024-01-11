@@ -35,8 +35,10 @@ Route::group( ['middleware' => ['auth']], function() {
 
     // ADMIN
     Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-        Route::get('/users', 'UserController@index')->name('users.index');
+        Route::resource('users', 'Admin\UserController');
     });
+
+
 
 
     // MULTI ROLE

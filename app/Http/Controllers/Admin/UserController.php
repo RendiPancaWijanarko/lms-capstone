@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Role;
-use App\User;
+use App\Entities\Role;
+use App\Entities\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -18,7 +18,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index');
+        $users = User::all();
+
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -28,7 +30,12 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        if (! Gate::allows('add_users')) {
+            return abort(401);
+        }
+        $roles = Role::get()->pluck('title', 'id');
+
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -39,7 +46,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (! Gate::allows('add_users')) {
+            return abort(401);
+        }
+        $user = User::create($request->only('name','email') + ['password' => bcrypt($request->password)]);
+        $user->role()->sync(array_filter((array)$request->input('role')));
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -59,9 +72,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        if (! Gate::allows('edit_users')) {
+            return abort(401);
+        }
+        $roles = Role::get()->pluck('title', 'id');
+
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -71,9 +89,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,User $user)
     {
-        //
+        if (! Gate::allows('edit_users')) {
+            return abort(401);
+        }
+        $user->update($request->only('name','email') + ['password' => bcrypt($request->password)]);
+        $user->role()->sync(array_filter((array)$request->input('role')));
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -82,8 +106,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        if (! Gate::allows('delete_users')) {
+            return abort(401);
+        }
+
+        $user->delete();
+
+        return redirect()->route('users.index');
     }
 }

@@ -1,70 +1,79 @@
 @extends('layouts.master')
 
-@section('addJavascript')
-{{-- START | INISIALISASI DATATABLES --}}
-    <script>
-        $(function(){
-            $('#data-table').DataTable();
-        })
-    </script>
-{{-- END | INISIALISASI DATATABLES --}}
-@endsection
-
 @section('content')
-<div class="col-12">
-    <div class="card">
-        <div class="card-header">
-            <div class="d-flex align-items-center">
-                <h3 class="card-title mx-auto w-100">@lang('course/actions.index')</h3>
-                <a href="{{ route('courses.create') }}" class="btn btn-success">@lang('course/actions.new')</a>
-            </div>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                <div class="row">
-                    <table class="table table-hover table-bordered" id="data-table">
-                        <thead>
-                            <tr role="row">
-                                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="">@lang('course/fields.id')</th>
-                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">@lang('course/fields.name')</th>
-                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">@lang('course/fields.description')</th>
-                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">@lang('course/fields.teacher')</th>
-                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label=""></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($courses as $course)
-                            <tr role="row" class="odd">
-                                <td class="sorting_1">{{ $course->id }}</td>
-                                <td>{{ $course->name }}</td>
-                                <td>{{ $course->description }}</td>
-                                <td>{{ $course->teacher->name }}</td>
-                                <td>
-                                    <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-primary float-left"><i class="fa fa-edit"></i></a>
-                                    @if($course->status == \App\Enums\CourseStatus::DISABLED)
-                                        {{ Form::open(['url' => route('courses.update', $course->id), 'method' => 'PUT', 'class' => 'form-inline']) }}
-                                            <input type="hidden" name="status" value="{{ \App\Enums\CourseStatus::ENABLED }}">
-                                            <button type="submit" value="" class="btn btn-success float-right"><i class="fa fa-eye"></i></button>
-                                        {{ Form::close() }}
-                                    @endif
-                                    {{ Form::open(['url' => route('courses.destroy', $course->id), 'method' => 'DELETE', 'class' => 'form-inline']) }}
-                                    <button type="submit" value="@lang('course/actions.delete')" class="btn btn-danger float-right"> <i class="fa fa-trash"></i> </button>
-                                    {{ Form::close() }}
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+
+    <div style="margin-bottom: 10px;" class="row">
+        <div class="col-lg-12">
+            <a class="btn btn-success" href="{{ route('users.create') }}">
+                Add Users
+            </a>
         </div>
     </div>
-</div>
-<!-- /.card-body -->
-</div>
-<!-- /.card -->
+<div class="card">
+    <div class="card-header">
+        User
+    </div>
 
-</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover datatable datatable-Location">
+                <thead>
+                    <tr>
+                        <th width="10">
+                            #
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Role
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
 
+                @forelse($users as $user)
+                    <tr data-entry-id="{{ $user->id }}">
+                        <td>
+                        </td>
+                        <td>
+                            {{ $user->name }}
+                        </td>
+                        <td>
+                            {{ $user->email }}
+                        </td>
+                        {{-- <td>
+                            @foreach ($user->role as $singleRole)
+                                <span class="badge badge-info">{{ $singleRole->title }}</span>
+                            @endforeach
+                        </td> --}}
+                        <td>
+                            <a class="btn btn-xs btn-info" href="{{ route('users.edit', $user->id) }}">
+                                Edit
+                            </a>
+                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure ?');" style="display: inline-block;">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-xs btn-danger" >Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td class="text-center" colspan="12">Data Not Found!</td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
 @endsection
